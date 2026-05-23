@@ -9,6 +9,26 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!-- SEO -->
+<meta name="description" content="Dapatkan penawaran asuransi Allianz dalam 3 menit. Tanpa agen. Tanpa tekanan. Perlindungan Jiwa, Kesehatan, Kendaraan, Properti, Perjalanan &amp; Kecelakaan Diri."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://secureeazy.id/"/>
+<!-- Open Graph / WhatsApp preview — upload og-image.png (1200×630px) to your hosting root to enable rich previews -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://secureeazy.id/"/>
+<meta property="og:title" content="SecureEasy — Asuransi Allianz Tanpa Tekanan"/>
+<meta property="og:description" content="Dapatkan penawaran asuransi Allianz dalam 3 menit. Tanpa agen. Tanpa tekanan. Pilih dari Jiwa, Kesehatan, Kendaraan, Properti, Perjalanan &amp; Kecelakaan Diri."/>
+<meta property="og:image" content="https://secureeazy.id/og-image.png"/>
+<meta property="og:locale" content="id_ID"/>
+<meta property="og:site_name" content="SecureEasy"/>
+<!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-XXXXXXXXXX');
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -226,6 +246,26 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
   .stepbar{display:none}
   .stepbar-mobile{display:flex}
 }
+
+/* ── PRICING GUIDE ── */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1rem;margin-bottom:1rem}
+.price-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;display:flex;flex-direction:column;gap:5px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.price-card i{font-size:26px;color:var(--blue)}
+.price-cov-name{font-size:13px;font-weight:600;color:var(--text)}
+.price-range{font-size:15px;font-weight:700;color:var(--blue)}
+.price-note-sm{font-size:11px;color:var(--text-3);line-height:1.5}
+.price-disclaimer{font-size:11px;color:var(--text-3);text-align:center;margin-top:.25rem}
+.price-cta-row{text-align:center;margin-top:1.5rem}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:8px;max-width:720px;margin:0 auto}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;font-size:14px;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;font-family:inherit;text-align:left}
+.faq-q:hover{background:var(--surface-2)}
+.faq-chevron{font-size:16px;color:var(--text-3);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 16px 14px;font-size:13px;color:var(--text-2);line-height:1.7}
+.faq-item.open .faq-a{display:block}
 </style>
 </head>
 <body>
@@ -306,6 +346,25 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
     </div>
   </div>
 
+  <div style="background:var(--surface-2)">
+    <div class="lp-section">
+      <div class="lp-section-title">
+        <h2 id="lbl_price_title">Monthly Premium Estimates</h2>
+        <p id="lbl_price_sub">Figures are estimates only. Actual prices depend on your profile, asset value, and chosen Allianz product.</p>
+      </div>
+      <div class="price-grid">
+        <div class="price-card"><i class="ti ti-heart-handshake"></i><div class="price-cov-name" data-en="Life" data-id="Jiwa">Life</div><div class="price-range" data-en="From Rp 200K/month" data-id="Mulai Rp 200rb/bulan">From Rp 200K/month</div><div class="price-note-sm" data-en="Age 30, non-smoker" data-id="Usia 30 tahun, non-perokok">Age 30, non-smoker</div></div>
+        <div class="price-card"><i class="ti ti-stethoscope"></i><div class="price-cov-name" data-en="Health" data-id="Kesehatan">Health</div><div class="price-range" data-en="From Rp 300K/month" data-id="Mulai Rp 300rb/bulan">From Rp 300K/month</div><div class="price-note-sm" data-en="Non-VIP class, Indonesia only" data-id="Kelas Non-VIP, Indonesia saja">Non-VIP class, Indonesia only</div></div>
+        <div class="price-card"><i class="ti ti-car"></i><div class="price-cov-name" data-en="Vehicle (TLO)" data-id="Kendaraan (TLO)">Vehicle (TLO)</div><div class="price-range" data-en="From Rp 150K/year" data-id="Mulai Rp 150rb/tahun">From Rp 150K/year</div><div class="price-note-sm" data-en="Motorcycle; cars from Rp 800K/yr" data-id="Motor; mobil mulai Rp 800rb/thn">Motorcycle; cars from Rp 800K/yr</div></div>
+        <div class="price-card"><i class="ti ti-car"></i><div class="price-cov-name" data-en="Vehicle (All Risk)" data-id="Kendaraan (All Risk)">Vehicle (All Risk)</div><div class="price-range" data-en="2–3% of vehicle value/yr" data-id="2–3% nilai kendaraan/tahun">2–3% of vehicle value/yr</div><div class="price-note-sm" data-en="e.g. Rp 250M car ≈ Rp 5–7.5M/yr" data-id="cth. Mobil Rp 250jt ≈ Rp 5–7,5jt/thn">e.g. Rp 250M car ≈ Rp 5–7.5M/yr</div></div>
+        <div class="price-card"><i class="ti ti-plane"></i><div class="price-cov-name" data-en="Travel" data-id="Perjalanan">Travel</div><div class="price-range" data-en="From Rp 50K/trip" data-id="Mulai Rp 50rb/perjalanan">From Rp 50K/trip</div><div class="price-note-sm" data-en="Domestic single trip" data-id="Perjalanan domestik sekali jalan">Domestic single trip</div></div>
+        <div class="price-card"><i class="ti ti-first-aid-kit"></i><div class="price-cov-name" data-en="Personal Accident" data-id="Kecelakaan Diri">Personal Accident</div><div class="price-range" data-en="From Rp 100K/month" data-id="Mulai Rp 100rb/bulan">From Rp 100K/month</div><div class="price-note-sm" data-en="Low-risk job, Rp 100M cover" data-id="Risiko rendah, pertanggungan Rp 100jt">Low-risk job, Rp 100M cover</div></div>
+      </div>
+      <p class="price-disclaimer" id="lbl_price_disclaimer">* Final pricing is determined by Allianz following underwriting assessment.</p>
+      <div class="price-cta-row"><button class="btn btn-p" onclick="showQuote()" id="lbl_price_cta">Get an accurate quote for your profile →</button></div>
+    </div>
+  </div>
+
   <!-- Testimonials -->
   <div style="background:var(--surface-2)">
     <div class="lp-section">
@@ -330,7 +389,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
           <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name" id="lbl_testi3_name">Maya P.</div><div class="testi-meta" id="lbl_testi3_meta">Travel &amp; Personal Accident · Bali</div></div></div>
         </div>
       </div>
-      <p style="text-align:center;font-size:11px;color:var(--text-3);margin-top:1.25rem" id="lbl_testi_note">* Testimonials are illustrative. Replace with real customer feedback once collected.</p>
     </div>
   </div>
 
@@ -349,6 +407,49 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
     </div>
   </div>
 
+  <div style="background:var(--surface-2)">
+    <div class="lp-section">
+      <div class="lp-section-title">
+        <h2 id="lbl_faq_title">Frequently Asked Questions</h2>
+        <p id="lbl_faq_sub">Everything you need to know before getting started.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span data-en="Is SecureEasy an official Allianz partner?" data-id="Apakah SecureEasy adalah mitra resmi Allianz?">Is SecureEasy an official Allianz partner?</span><i class="ti ti-chevron-down faq-chevron"></i></button>
+          <div class="faq-a"><p data-en="Yes. SecureEasy is operated by a licensed Allianz insurance partner registered with OJK (Financial Services Authority of Indonesia)." data-id="Ya. SecureEasy dioperasikan oleh mitra asuransi Allianz berlisensi yang terdaftar di OJK (Otoritas Jasa Keuangan).">Yes. SecureEasy is operated by a licensed Allianz insurance partner registered with OJK (Financial Services Authority of Indonesia).</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span data-en="Is there any fee to get a quote?" data-id="Apakah ada biaya untuk mendapatkan penawaran?">Is there any fee to get a quote?</span><i class="ti ti-chevron-down faq-chevron"></i></button>
+          <div class="faq-a"><p data-en="None at all. Getting a quote is completely free and there is no obligation to purchase." data-id="Tidak sama sekali. Mendapatkan penawaran sepenuhnya gratis dan tidak ada kewajiban untuk membeli.">None at all. Getting a quote is completely free and there is no obligation to purchase.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span data-en="How long until I receive my quote?" data-id="Berapa lama hingga saya menerima penawaran?">How long until I receive my quote?</span><i class="ti ti-chevron-down faq-chevron"></i></button>
+          <div class="faq-a"><p data-en="Most quotes are delivered within 24 hours on business days. Complex or bundled coverage may take up to 2 business days." data-id="Sebagian besar penawaran dikirimkan dalam 24 jam di hari kerja. Perlindungan yang kompleks atau gabungan mungkin memerlukan hingga 2 hari kerja.">Most quotes are delivered within 24 hours on business days. Complex or bundled coverage may take up to 2 business days.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span data-en="Will an agent call me after I submit?" data-id="Apakah agen akan menghubungi saya setelah mengisi form?">Will an agent call me after I submit?</span><i class="ti ti-chevron-down faq-chevron"></i></button>
+          <div class="faq-a"><p data-en="Only if you want. You choose your preferred contact method — email or WhatsApp. We will never call you uninvited." data-id="Hanya jika Anda mau. Anda memilih metode kontak — email atau WhatsApp. Kami tidak akan pernah menelepon tanpa izin.">Only if you want. You choose your preferred contact method — email or WhatsApp. We will never call you uninvited.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span data-en="Can I buy the policy directly?" data-id="Apakah saya bisa membeli polis langsung?">Can I buy the policy directly?</span><i class="ti ti-chevron-down faq-chevron"></i></button>
+          <div class="faq-a"><p data-en="After receiving your quote, you can decide to proceed. Our team will guide you through the Allianz policy process — no pressure, no hard sell." data-id="Setelah menerima penawaran, Anda bisa memutuskan untuk melanjutkan. Tim kami akan memandu Anda melalui proses polis Allianz — tanpa tekanan, tanpa hard sell.">After receiving your quote, you can decide to proceed. Our team will guide you through the Allianz policy process — no pressure, no hard sell.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span data-en="What is the difference between TLO and All Risk?" data-id="Apa perbedaan TLO dan All Risk?">What is the difference between TLO and All Risk?</span><i class="ti ti-chevron-down faq-chevron"></i></button>
+          <div class="faq-a"><p data-en="TLO (Total Loss Only) covers your vehicle only if it is stolen or damaged beyond repair. All Risk covers all damage including minor scratches and dents. TLO is more affordable; All Risk offers complete protection." data-id="TLO menanggung kendaraan Anda hanya jika dicuri atau rusak total. All Risk menanggung semua kerusakan termasuk lecet dan penyok kecil. TLO lebih terjangkau; All Risk memberikan perlindungan penuh.">TLO (Total Loss Only) covers your vehicle only if it is stolen or damaged beyond repair. All Risk covers all damage including minor scratches and dents. TLO is more affordable; All Risk offers complete protection.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span data-en="Are pre-existing conditions automatically excluded?" data-id="Apakah penyakit bawaan otomatis tidak ditanggung?">Are pre-existing conditions automatically excluded?</span><i class="ti ti-chevron-down faq-chevron"></i></button>
+          <div class="faq-a"><p data-en="Not necessarily. Disclosing them upfront means your quote will accurately reflect your situation. Some conditions may carry a waiting period or specific exclusion — our team will explain exactly what applies to you." data-id="Belum tentu. Mengungkapkannya di awal berarti penawaran Anda mencerminkan situasi Anda secara akurat. Beberapa kondisi mungkin memiliki masa tunggu atau pengecualian — tim kami akan menjelaskan apa yang berlaku untuk Anda.">Not necessarily. Disclosing them upfront means your quote will accurately reflect your situation. Some conditions may carry a waiting period or specific exclusion — our team will explain exactly what applies to you.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span data-en="What happens when I need to make a claim?" data-id="Apa yang terjadi saat saya perlu mengajukan klaim?">What happens when I need to make a claim?</span><i class="ti ti-chevron-down faq-chevron"></i></button>
+          <div class="faq-a"><p data-en="Claims are processed directly by Allianz. We can assist you in understanding the claim steps and connecting you with the right Allianz team." data-id="Klaim diproses langsung oleh Allianz. Kami dapat membantu Anda memahami langkah-langkah klaim dan menghubungkan Anda dengan tim Allianz yang tepat.">Claims are processed directly by Allianz. We can assist you in understanding the claim steps and connecting you with the right Allianz team.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="lp-cta-strip">
     <h2 id="lbl_cta_title">Ready to protect what matters?</h2>
     <p id="lbl_cta_sub">It takes less than 3 minutes. No commitment required.</p>
@@ -357,6 +458,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
 
   <footer>
     &copy; 2025 SecureEasy &nbsp;·&nbsp; <span id="lbl_footer_allianz">Powered by Allianz</span> &nbsp;·&nbsp; <span id="lbl_footer_note">All information is handled securely and used only to prepare your quote.</span>
+    <br/><span id="lbl_ojk_note">Allianz insurance products are supervised by OJK (Financial Services Authority of Indonesia).</span>
   </footer>
 
 </div><!-- /page-landing -->
@@ -607,7 +709,6 @@ en:{
   testi2_name:'Dian S.',testi2_meta:'Vehicle coverage · Surabaya',
   testi3_body:'"Finally a way to get insured without someone calling me every day. The quote was clear and I understood exactly what I was getting."',
   testi3_name:'Maya P.',testi3_meta:'Travel & Personal Accident · Bali',
-  testi_note:'* Testimonials are illustrative. Replace with real customer feedback once collected.',
   why_title:'Why SecureEasy?',why_sub:'Getting insured should feel effortless — not stressful.',
   why1_title:'No agent pressure',why1_body:'Explore, compare, and decide entirely on your own terms. We only reach out if you want us to.',
   why2_title:'Transparent quotes',why2_body:"Your quote is based on your actual details — not a generic estimate. What you see is what you get from Allianz.",
@@ -649,6 +750,11 @@ en:{
   lbl_Life:'Life',lbl_Health:'Health',lbl_Vehicle:'Vehicle',lbl_Buildings:'Buildings',lbl_Travel:'Travel',lbl_PersonalAccident:'Personal Accident',
   sending:'Sending…',send_failed:'Failed to send. Please try again.',
   step_of:'Step $1 of $2',skipped_flag:'⚠ Skipped — follow up needed',
+  faq_title:'Frequently Asked Questions',faq_sub:'Everything you need to know before getting started.',
+  price_title:'Monthly Premium Estimates',price_sub:'Figures are estimates only. Actual prices depend on your profile, asset value, and chosen Allianz product.',
+  price_disclaimer:'* Final pricing is determined by Allianz following underwriting assessment.',
+  price_cta:'Get an accurate quote for your profile →',
+  ojk_note:'Allianz insurance products are supervised by OJK (Financial Services Authority of Indonesia).',
 },
 id:{
   powered:'Didukung oleh Allianz',nav_cta:'Dapatkan Penawaran',wa_float:'Chat dulu dengan kami',
@@ -675,7 +781,6 @@ id:{
   testi2_name:'Dian S.',testi2_meta:'Kendaraan · Surabaya',
   testi3_body:'"Akhirnya ada cara untuk berasuransi tanpa ada yang menelepon setiap hari. Penawarannya jelas dan saya tahu persis apa yang saya dapatkan."',
   testi3_name:'Maya P.',testi3_meta:'Perjalanan & Kecelakaan Diri · Bali',
-  testi_note:'* Testimoni bersifat ilustratif. Ganti dengan ulasan pelanggan nyata setelah terkumpul.',
   why_title:'Mengapa SecureEasy?',why_sub:'Mendapatkan asuransi seharusnya mudah — bukan menegangkan.',
   why1_title:'Tanpa tekanan agen',why1_body:'Jelajahi, bandingkan, dan putuskan sepenuhnya sesuai keinginan Anda. Kami hanya menghubungi jika Anda minta.',
   why2_title:'Penawaran transparan',why2_body:'Penawaran didasarkan pada detail nyata Anda — bukan estimasi umum.',
@@ -717,6 +822,11 @@ id:{
   lbl_Life:'Jiwa',lbl_Health:'Kesehatan',lbl_Vehicle:'Kendaraan',lbl_Buildings:'Properti',lbl_Travel:'Perjalanan',lbl_PersonalAccident:'Kecelakaan Diri',
   sending:'Mengirim…',send_failed:'Gagal mengirim. Silakan coba lagi.',
   step_of:'Langkah $1 dari $2',skipped_flag:'⚠ Dilewati — perlu tindak lanjut',
+  faq_title:'Pertanyaan yang Sering Diajukan',faq_sub:'Semua yang perlu Anda ketahui sebelum memulai.',
+  price_title:'Estimasi Premi Bulanan',price_sub:'Angka di bawah hanyalah estimasi. Harga aktual bergantung pada profil, nilai aset, dan produk Allianz yang dipilih.',
+  price_disclaimer:'* Harga final ditentukan oleh Allianz setelah penilaian underwriting.',
+  price_cta:'Dapatkan penawaran tepat untuk profil Anda →',
+  ojk_note:'Produk asuransi Allianz diawasi oleh OJK (Otoritas Jasa Keuangan).',
 }
 };
 
@@ -773,7 +883,6 @@ var STATIC_IDS={
   testi1_body:'lbl_testi1_body',testi1_name:'lbl_testi1_name',testi1_meta:'lbl_testi1_meta',
   testi2_body:'lbl_testi2_body',testi2_name:'lbl_testi2_name',testi2_meta:'lbl_testi2_meta',
   testi3_body:'lbl_testi3_body',testi3_name:'lbl_testi3_name',testi3_meta:'lbl_testi3_meta',
-  testi_note:'lbl_testi_note',
   why_title:'lbl_why_title',why_sub:'lbl_why_sub',
   why1_title:'lbl_why1_title',why1_body:'lbl_why1_body',
   why2_title:'lbl_why2_title',why2_body:'lbl_why2_body',
@@ -794,7 +903,11 @@ var STATIC_IDS={
   semail:'lbl_semail',swa:'lbl_swa',spref:'lbl_spref',
   consent:'lbl_consent',review:'lbl_review',submit:'lbl_submit',
   ok_title:'lbl_ok_title',ok_email_sent:'lbl_ok_email_sent',ok_time:'lbl_ok_time',ok_wa:'lbl_ok_wa',
-  restart:'lbl_restart',back_home:'lbl_back_home'
+  restart:'lbl_restart',back_home:'lbl_back_home',
+  faq_title:'lbl_faq_title',faq_sub:'lbl_faq_sub',
+  price_title:'lbl_price_title',price_sub:'lbl_price_sub',
+  price_disclaimer:'lbl_price_disclaimer',price_cta:'lbl_price_cta',
+  ojk_note:'lbl_ojk_note'
 };
 var HTML_KEYS=['hero_h1','hero_p','ok_body'];
 
@@ -1047,6 +1160,11 @@ function restart(){
   document.getElementById('submitErr').style.display='none';
   document.getElementById('lbl_submit').textContent=t('submit');
   goStep(1);
+}
+
+// ── FAQ toggle ───────────────────────────────────────────────────────────
+function toggleFaq(btn){
+  btn.closest('.faq-item').classList.toggle('open');
 }
 
 // Init mobile bar
