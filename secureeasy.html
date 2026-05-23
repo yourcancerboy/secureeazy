@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SecureEasy — Powered by Allianz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#0033A0;--blue-light:#EBF0FF;--blue-mid:#b3c4f0;
+  --text:#1a1a1a;--text-2:#555;--text-3:#888;
+  --border:#e0e0e0;--border-2:#c8c8c8;
+  --bg:#f5f5f3;--surface:#fff;--surface-2:#f9f9f7;
+  --success-bg:#e6f4ea;--success-text:#1e7e34;--success-border:#a8d5b2;
+  --warning-bg:#fff8e1;--warning-border:#ffe082;--warning-text:#7a5c00;
+  --danger:#c0392b;
+  --radius:10px;--radius-sm:7px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.875rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer}
+.nav-mark{width:34px;height:34px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.nav-mark i{color:#fff;font-size:18px}
+.nav-name{font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.3px}
+.nav-name span{color:var(--blue)}
+.nav-powered{font-size:10px;color:var(--text-3)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.lang-toggle{display:flex;gap:4px}
+.lang-btn{padding:4px 12px;font-size:12px;font-weight:600;border:1.5px solid var(--border-2);border-radius:20px;cursor:pointer;background:transparent;color:var(--text-2);font-family:inherit;transition:all .15s}
+.lang-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.nav-cta{padding:7px 18px;font-size:13px;font-weight:600;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:inherit;transition:opacity .15s}
+.nav-cta:hover{opacity:.87}
+
+/* ── PAGES ── */
+#page-landing{display:block}
+#page-quote{display:none}
+
+/* ── HERO ── */
+.lp-hero{background:linear-gradient(135deg,#001f6b 0%,#0033A0 55%,#1a5fd4 100%);color:#fff;text-align:center;padding:5rem 1.5rem 4rem;position:relative;overflow:hidden;}
+.lp-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");}
+.lp-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;margin-bottom:1.5rem;position:relative;}
+.lp-hero h1{font-size:clamp(26px,5vw,44px);font-weight:700;line-height:1.15;letter-spacing:-.5px;margin-bottom:1rem;position:relative}
+.lp-hero h1 em{font-style:normal;color:#7eb8ff}
+.lp-hero p{font-size:16px;color:rgba(255,255,255,.82);max-width:500px;margin:0 auto 2rem;line-height:1.7;position:relative}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-hero-p{padding:13px 28px;font-size:15px;font-weight:600;background:#fff;color:var(--blue);border:none;border-radius:var(--radius);cursor:pointer;font-family:inherit;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+.btn-hero-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.22)}
+.btn-hero-g{padding:13px 28px;font-size:15px;font-weight:600;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);border-radius:var(--radius);cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s}
+.btn-hero-g:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ── TRUST STRIP ── */
+.lp-trust{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;padding:1.1rem 1.5rem;background:#fff;border-bottom:1px solid var(--border)}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2);font-weight:500}
+.trust-item i{font-size:16px;color:var(--blue)}
+
+/* ── SECTIONS ── */
+.lp-section{padding:4rem 1.5rem;max-width:960px;margin:0 auto}
+.lp-section-title{text-align:center;margin-bottom:2.5rem}
+.lp-section-title h2{font-size:clamp(22px,3vw,30px);font-weight:700;letter-spacing:-.3px;margin-bottom:.5rem}
+.lp-section-title p{font-size:15px;color:var(--text-2)}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--blue-light);color:var(--blue);font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto .875rem}
+.step-card h3{font-size:15px;font-weight:600;margin-bottom:.4rem}
+.step-card p{font-size:13px;color:var(--text-2);line-height:1.6}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1rem}
+.cov-feature-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:border-color .15s,transform .15s}
+.cov-feature-card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.cov-feature-card i{font-size:28px;color:var(--blue)}
+.cf-name{font-size:13px;font-weight:600}
+.cf-desc{font-size:11px;color:var(--text-2);line-height:1.4}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem}
+.why-card{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.why-icon{width:40px;height:40px;border-radius:9px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.why-icon i{font-size:20px;color:var(--blue)}
+.why-card h3{font-size:14px;font-weight:600;margin-bottom:3px}
+.why-card p{font-size:13px;color:var(--text-2);line-height:1.6}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem}
+.testi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.testi-stars{color:#f4a800;font-size:13px;margin-bottom:.5rem}
+.testi-body{font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:.75rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:9px}
+.testi-avatar{width:34px;height:34px;border-radius:50%;background:var(--blue-light);color:var(--blue);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.testi-name{font-size:13px;font-weight:600}
+.testi-meta{font-size:11px;color:var(--text-3)}
+
+/* ── WA FLOAT BUTTON ── */
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:28px;padding:11px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;box-shadow:0 4px 16px rgba(37,211,102,.4);transition:transform .15s,box-shadow .15s;text-decoration:none}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.5)}
+.wa-float i{font-size:20px}
+
+/* ── CTA STRIP ── */
+.lp-cta-strip{background:linear-gradient(135deg,#001f6b,#0033A0);color:#fff;text-align:center;padding:3.5rem 1.5rem}
+.lp-cta-strip h2{font-size:clamp(20px,3vw,30px);font-weight:700;margin-bottom:.75rem;letter-spacing:-.3px}
+.lp-cta-strip p{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:1.75rem}
+
+footer{background:#111;color:rgba(255,255,255,.4);text-align:center;padding:1.5rem;font-size:12px;line-height:1.8}
+
+/* ══════════════════════════════════
+   QUOTE PAGE
+══════════════════════════════════ */
+.quote-wrap{width:100%;max-width:620px;margin:0 auto;padding:2rem 1rem 4rem}
+.quote-hero{text-align:center;margin-bottom:1.75rem}
+.quote-hero h1{font-size:22px;font-weight:700;margin-bottom:5px;letter-spacing:-.3px}
+.quote-hero p{font-size:14px;color:var(--text-2)}
+
+/* Step bar — desktop */
+.stepbar{display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem;gap:4px}
+.st{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-3);font-weight:500;white-space:nowrap}
+.st.active{color:var(--blue)}
+.st.done{color:var(--text-2)}
+.st-n{width:22px;height:22px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.st.active .st-n{background:var(--blue);color:#fff;border-color:var(--blue)}
+.st.done .st-n{background:var(--success-bg);color:var(--success-text);border-color:var(--success-border)}
+.st-line{width:18px;height:1.5px;background:var(--border);flex-shrink:0}
+.st-line.done{background:var(--success-text)}
+/* Step bar — mobile: show only number + current step name */
+.stepbar-mobile{display:none;align-items:center;justify-content:space-between;margin-bottom:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem}
+.sbm-left{display:flex;align-items:center;gap:8px}
+.sbm-dots{display:flex;gap:5px}
+.sbm-dot{width:8px;height:8px;border-radius:50%;background:var(--border)}
+.sbm-dot.done{background:var(--success-text)}
+.sbm-dot.active{background:var(--blue)}
+.sbm-label{font-size:13px;font-weight:600;color:var(--blue)}
+.sbm-count{font-size:12px;color:var(--text-3)}
+
+/* Panel */
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:.875rem;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.ptitle{font-size:14px;font-weight:600;margin-bottom:1rem;color:var(--text);display:flex;align-items:center;gap:7px}
+.ptitle i{color:var(--blue);font-size:17px}
+
+/* Coverage grid */
+.cov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.cov-card{border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:13px 10px;cursor:pointer;transition:border-color .15s,background .15s;display:flex;flex-direction:column;align-items:flex-start;gap:5px;user-select:none}
+.cov-card:hover{border-color:var(--blue);background:#f5f7ff}
+.cov-card.sel{border-color:var(--blue);background:var(--blue-light)}
+.cov-card i{font-size:21px;color:var(--blue)}
+.cov-card .cn{font-size:13px;font-weight:600;color:var(--text)}
+.cov-card .cd{font-size:11px;color:var(--text-2);line-height:1.4}
+
+/* Fields */
+.field{margin-bottom:.875rem}
+.field:last-child{margin-bottom:0}
+label.lbl{font-size:12px;font-weight:500;color:var(--text-2);margin-bottom:4px;display:block}
+input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;padding:9px 12px;font-size:14px;border:1px solid var(--border-2);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font-family:inherit;outline:none;transition:border-color .15s,box-shadow .15s;appearance:none;-webkit-appearance:none;}
+textarea{resize:vertical;min-height:80px;line-height:1.6}
+input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,51,160,.1)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{font-size:11px;color:var(--danger);margin-top:3px;display:none}
+
+/* Toggle yes/no */
+.yn-row{display:flex;gap:8px;margin-top:2px}
+.yn-btn{flex:1;padding:9px;font-size:13px;font-weight:600;border:1.5px solid var(--border-2);border-radius:var(--radius-sm);cursor:pointer;background:var(--surface);color:var(--text-2);font-family:inherit;transition:all .15s;text-align:center}
+.yn-btn.sel-yes{border-color:#c0392b;background:#fdf0ef;color:#c0392b}
+.yn-btn.sel-no{border-color:var(--success-text);background:var(--success-bg);color:var(--success-text)}
+
+/* Warning box */
+.warn-box{display:none;background:var(--warning-bg);border:1px solid var(--warning-border);border-radius:var(--radius-sm);padding:11px 13px;font-size:12px;color:var(--warning-text);margin-top:.75rem;line-height:1.6}
+.warn-box i{font-size:14px;margin-right:5px;vertical-align:-2px}
+
+/* Notice */
+.notice{background:#f0f4ff;border:1px solid var(--blue-mid);border-radius:var(--radius-sm);padding:11px 13px;font-size:12px;color:#3b4a7a;display:flex;gap:9px;align-items:flex-start;margin-top:.875rem}
+.notice i{color:var(--blue);font-size:15px;flex-shrink:0;margin-top:1px}
+
+/* Skip row */
+.skip-row{display:flex;align-items:center;gap:9px;padding:10px 12px;border:1.5px dashed var(--border-2);border-radius:var(--radius-sm);cursor:pointer;user-select:none;margin-top:.875rem;font-size:13px;color:var(--text-2);transition:background .15s}
+.skip-row:hover{background:var(--surface-2)}
+.skip-row input[type=checkbox]{accent-color:var(--blue);width:15px;height:15px;flex-shrink:0}
+
+/* Consent checkbox */
+.consent-box{background:var(--blue-light);border:1.5px solid var(--blue-mid);border-radius:var(--radius-sm);padding:13px 15px;margin-bottom:.875rem;display:flex;gap:11px;align-items:flex-start;cursor:pointer;user-select:none;transition:background .15s}
+.consent-box:hover{background:#dde8ff}
+.consent-box input[type=checkbox]{accent-color:var(--blue);width:16px;height:16px;flex-shrink:0;margin-top:2px;cursor:pointer}
+.consent-box span{font-size:13px;color:#2a3a70;line-height:1.6}
+.consent-box.err-consent{border-color:var(--danger);background:#fdf0ef}
+.consent-box.err-consent span{color:var(--danger)}
+
+/* Summary */
+.sum-row{display:flex;justify-content:space-between;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;gap:12px}
+.sum-row:last-of-type{border-bottom:none}
+.sum-lbl{color:var(--text-2);flex-shrink:0}
+.sum-val{font-weight:500;color:var(--text);text-align:right}
+.sum-val.skipped{color:var(--text-3);font-weight:400;font-style:italic}
+.tag{display:inline-flex;align-items:center;font-size:11px;padding:3px 9px;border-radius:20px;background:var(--blue-light);color:var(--blue);margin:2px;font-weight:500}
+.tags{display:flex;flex-wrap:wrap;justify-content:flex-end}
+
+/* Buttons */
+.btn-row{display:flex;gap:9px;justify-content:space-between;align-items:center;margin-top:1.25rem}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;font-size:13px;font-weight:600;border-radius:var(--radius-sm);cursor:pointer;border:none;font-family:inherit;transition:opacity .15s,transform .1s}
+.btn:active{transform:scale(.98)}
+.btn-p{background:var(--blue);color:#fff}
+.btn-p:hover{opacity:.88}
+.btn-p:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-g{background:var(--surface);color:var(--text-2);border:1px solid var(--border-2)}
+.btn-g:hover{background:var(--surface-2)}
+
+/* Success */
+.ok{text-align:center;padding:2.5rem 1rem}
+.ok-icon{width:56px;height:56px;background:var(--success-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+.ok-icon i{font-size:28px;color:var(--success-text)}
+.ok h2{font-size:20px;font-weight:700;margin-bottom:10px}
+.ok p{font-size:14px;color:var(--text-2);line-height:1.7;max-width:420px;margin:0 auto}
+.ok-detail{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;margin:1.25rem auto 0;max-width:360px;font-size:13px;color:var(--text-2);line-height:1.7;text-align:left}
+.ok-detail i{color:var(--blue);margin-right:5px}
+
+#submitErr{font-size:12px;color:var(--danger);margin-top:.5rem;display:none}
+
+/* Responsive */
+@media(max-width:600px){
+  .cov-grid{grid-template-columns:repeat(2,1fr)}
+  .row2{grid-template-columns:1fr}
+  nav{padding:.75rem 1rem}
+  .nav-cta{display:none}
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-hero-p,.btn-hero-g{width:100%;max-width:300px}
+  .stepbar{display:none}
+  .stepbar-mobile{display:flex}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showLanding()">
+    <div class="nav-mark"><i class="ti ti-shield-check"></i></div>
+    <div>
+      <div class="nav-name">Secure<span>Easy</span></div>
+      <div class="nav-powered" id="lbl_powered">Powered by Allianz</div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('id')">ID</button>
+    </div>
+    <button class="nav-cta" onclick="showQuote()" id="lbl_nav_cta">Get a Quote</button>
+  </div>
+</nav>
+
+<!-- WhatsApp float -->
+<a class="wa-float" href="https://wa.me/628XXXXXXXXXX" target="_blank" id="wa_float_btn">
+  <i class="ti ti-brand-whatsapp"></i><span id="lbl_wa_float">Chat with us first</span>
+</a>
+
+<!-- ════════════════════════
+     LANDING PAGE
+════════════════════════ -->
+<div id="page-landing">
+
+  <section class="lp-hero">
+    <div class="lp-hero-badge"><i class="ti ti-shield-check"></i> <span id="lbl_badge">Official Allianz Partner</span></div>
+    <h1 id="lbl_hero_h1">Insurance that works <em>for you</em>,<br>not around you.</h1>
+    <p id="lbl_hero_p">Get a personalised Allianz quote in minutes. No agents hunting you down. No pressure. Just clear coverage, done your way.</p>
+    <div class="hero-btns">
+      <button class="btn-hero-p" onclick="showQuote()" id="lbl_hero_cta">Get my free quote</button>
+      <button class="btn-hero-g" onclick="document.getElementById('lp-how').scrollIntoView({behavior:'smooth'})" id="lbl_hero_learn">How it works</button>
+    </div>
+  </section>
+
+  <div class="lp-trust">
+    <div class="trust-item"><i class="ti ti-lock"></i><span id="lbl_trust1">Data secured &amp; private</span></div>
+    <div class="trust-item"><i class="ti ti-user-off"></i><span id="lbl_trust2">No agent follow-up unless you want it</span></div>
+    <div class="trust-item"><i class="ti ti-clock"></i><span id="lbl_trust3">Quote in under 3 minutes</span></div>
+    <div class="trust-item"><i class="ti ti-rosette-discount-check"></i><span id="lbl_trust4">Genuine Allianz products</span></div>
+  </div>
+
+  <div id="lp-how" style="background:var(--surface-2)">
+    <div class="lp-section">
+      <div class="lp-section-title">
+        <h2 id="lbl_how_title">How it works</h2>
+        <p id="lbl_how_sub">Three simple steps — no phone calls, no back-and-forth.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card"><div class="step-num">1</div><h3 id="lbl_how1_title">Pick your coverage</h3><p id="lbl_how1_body">Choose from Life, Health, Vehicle, Buildings, Travel, or Personal Accident — or any combination.</p></div>
+        <div class="step-card"><div class="step-num">2</div><h3 id="lbl_how2_title">Share a few details</h3><p id="lbl_how2_body">Fill in basic information so we can tailor your quote. Skip anything you're unsure about — we'll follow up if needed.</p></div>
+        <div class="step-card"><div class="step-num">3</div><h3 id="lbl_how3_title">Receive your quote</h3><p id="lbl_how3_body">We send a personalised Allianz quote to your email or WhatsApp. Review at your own pace — no pressure, ever.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="lp-section">
+      <div class="lp-section-title">
+        <h2 id="lbl_cov_title">What we cover</h2>
+        <p id="lbl_cov_sub">Comprehensive Allianz protection across six categories.</p>
+      </div>
+      <div class="coverage-grid">
+        <div class="cov-feature-card"><i class="ti ti-heart-handshake"></i><div class="cf-name" id="lbl_fc_life">Life</div><div class="cf-desc" id="lbl_fd_life">Financial security for your loved ones when it matters most</div></div>
+        <div class="cov-feature-card"><i class="ti ti-stethoscope"></i><div class="cf-name" id="lbl_fc_health">Health</div><div class="cf-desc" id="lbl_fd_health">Hospitalisation &amp; medical coverage across Indonesia</div></div>
+        <div class="cov-feature-card"><i class="ti ti-car"></i><div class="cf-name" id="lbl_fc_vehicle">Vehicle</div><div class="cf-desc" id="lbl_fd_vehicle">TLO or All Risk for cars &amp; motorcycles</div></div>
+        <div class="cov-feature-card"><i class="ti ti-building"></i><div class="cf-name" id="lbl_fc_buildings">Buildings</div><div class="cf-desc" id="lbl_fd_buildings">Protect your home, apartment, or property</div></div>
+        <div class="cov-feature-card"><i class="ti ti-plane"></i><div class="cf-name" id="lbl_fc_travel">Travel</div><div class="cf-desc" id="lbl_fd_travel">Domestic and international travel protection</div></div>
+        <div class="cov-feature-card"><i class="ti ti-first-aid-kit"></i><div class="cf-name" id="lbl_fc_pa">Personal Accident</div><div class="cf-desc" id="lbl_fd_pa">Injury &amp; disability cover for everyday life</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div style="background:var(--surface-2)">
+    <div class="lp-section">
+      <div class="lp-section-title">
+        <h2 id="lbl_testi_title">What people are saying</h2>
+        <p id="lbl_testi_sub">Real quotes from people who chose the easy way.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-body" id="lbl_testi1_body">"I've always avoided insurance because I hated the agent calls. This was completely different — I filled it in myself and got a proper quote by email the same day."</div>
+          <div class="testi-author"><div class="testi-avatar">R</div><div><div class="testi-name" id="lbl_testi1_name">Reza A.</div><div class="testi-meta" id="lbl_testi1_meta">Health &amp; Life coverage · Jakarta</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-body" id="lbl_testi2_body">"Super easy to use. I wasn't sure about some of the details so I skipped them and was contacted nicely — no pressure at all."</div>
+          <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name" id="lbl_testi2_name">Dian S.</div><div class="testi-meta" id="lbl_testi2_meta">Vehicle coverage · Surabaya</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-body" id="lbl_testi3_body">"Finally a way to get insured without someone calling me every day. The quote was clear and I understood exactly what I was getting."</div>
+          <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name" id="lbl_testi3_name">Maya P.</div><div class="testi-meta" id="lbl_testi3_meta">Travel &amp; Personal Accident · Bali</div></div></div>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:11px;color:var(--text-3);margin-top:1.25rem" id="lbl_testi_note">* Testimonials are illustrative. Replace with real customer feedback once collected.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="lp-section">
+      <div class="lp-section-title">
+        <h2 id="lbl_why_title">Why SecureEasy?</h2>
+        <p id="lbl_why_sub">Getting insured should feel effortless — not stressful.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon"><i class="ti ti-user-off"></i></div><div><h3 id="lbl_why1_title">No agent pressure</h3><p id="lbl_why1_body">Explore, compare, and decide entirely on your own terms. We only reach out if you want us to.</p></div></div>
+        <div class="why-card"><div class="why-icon"><i class="ti ti-file-check"></i></div><div><h3 id="lbl_why2_title">Transparent quotes</h3><p id="lbl_why2_body">Your quote is based on your actual details — not a generic estimate. What you see is what you get from Allianz.</p></div></div>
+        <div class="why-card"><div class="why-icon"><i class="ti ti-lock"></i></div><div><h3 id="lbl_why3_title">Your data stays yours</h3><p id="lbl_why3_body">We collect only what's needed for your quote. We never sell or share your information with third parties.</p></div></div>
+        <div class="why-card"><div class="why-icon"><i class="ti ti-headset"></i></div><div><h3 id="lbl_why4_title">Help when you need it</h3><p id="lbl_why4_body">Have questions? Reach out via WhatsApp and a real person will assist — without the hard sell.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lp-cta-strip">
+    <h2 id="lbl_cta_title">Ready to protect what matters?</h2>
+    <p id="lbl_cta_sub">It takes less than 3 minutes. No commitment required.</p>
+    <button class="btn-hero-p" onclick="showQuote()" id="lbl_cta_btn">Get my free quote →</button>
+  </div>
+
+  <footer>
+    &copy; 2025 SecureEasy &nbsp;·&nbsp; <span id="lbl_footer_allianz">Powered by Allianz</span> &nbsp;·&nbsp; <span id="lbl_footer_note">All information is handled securely and used only to prepare your quote.</span>
+  </footer>
+
+</div><!-- /page-landing -->
+
+
+<!-- ════════════════════════
+     QUOTE PAGE
+════════════════════════ -->
+<div id="page-quote">
+<div class="quote-wrap">
+
+  <div class="quote-hero">
+    <h1 id="lbl_q_h1">Get your personalised quote</h1>
+    <p id="lbl_q_sub">No agents. No calls. Just honest coverage, done easy.</p>
+  </div>
+
+  <!-- Desktop step bar -->
+  <div class="stepbar">
+    <div class="st active" id="sb1"><div class="st-n">1</div><span id="lbl_s1">Coverage</span></div>
+    <div class="st-line" id="sl1"></div>
+    <div class="st" id="sb2"><div class="st-n">2</div><span id="lbl_s2">Details</span></div>
+    <div class="st-line" id="sl2"></div>
+    <div class="st" id="sb3"><div class="st-n">3</div><span id="lbl_s3">Coverage Info</span></div>
+    <div class="st-line" id="sl3"></div>
+    <div class="st" id="sb4"><div class="st-n">4</div><span id="lbl_s4">Contact</span></div>
+    <div class="st-line" id="sl4"></div>
+    <div class="st" id="sb5"><div class="st-n">5</div><span id="lbl_s5">Summary</span></div>
+  </div>
+
+  <!-- Mobile step bar -->
+  <div class="stepbar-mobile" id="stepbarMobile">
+    <div class="sbm-left">
+      <div class="sbm-dots" id="sbmDots"></div>
+      <div class="sbm-label" id="sbmLabel">Coverage</div>
+    </div>
+    <div class="sbm-count" id="sbmCount">Step 1 of 5</div>
+  </div>
+
+  <!-- Step 1: Coverage -->
+  <div id="step1">
+    <div class="panel">
+      <div class="ptitle" id="lbl_covtitle">What would you like to protect?</div>
+      <div class="cov-grid">
+        <div class="cov-card" data-cov="Life" onclick="toggleCov(this)"><i class="ti ti-heart-handshake"></i><div class="cn" data-en="Life" data-id="Jiwa">Life</div><div class="cd" data-en="Financial security for loved ones" data-id="Perlindungan finansial keluarga">Financial security for loved ones</div></div>
+        <div class="cov-card" data-cov="Health" onclick="toggleCov(this)"><i class="ti ti-stethoscope"></i><div class="cn" data-en="Health" data-id="Kesehatan">Health</div><div class="cd" data-en="Medical & hospitalisation cover" data-id="Rawat inap & medis">Medical &amp; hospitalisation cover</div></div>
+        <div class="cov-card" data-cov="Vehicle" onclick="toggleCov(this)"><i class="ti ti-car"></i><div class="cn" data-en="Vehicle" data-id="Kendaraan">Vehicle</div><div class="cd" data-en="Car & motorcycle protection" data-id="Mobil & sepeda motor">Car &amp; motorcycle protection</div></div>
+        <div class="cov-card" data-cov="Buildings" onclick="toggleCov(this)"><i class="ti ti-building"></i><div class="cn" data-en="Buildings" data-id="Properti">Buildings</div><div class="cd" data-en="Home & property coverage" data-id="Rumah & properti">Home &amp; property coverage</div></div>
+        <div class="cov-card" data-cov="Travel" onclick="toggleCov(this)"><i class="ti ti-plane"></i><div class="cn" data-en="Travel" data-id="Perjalanan">Travel</div><div class="cd" data-en="Local & international trips" data-id="Perjalanan lokal & internasional">Local &amp; international trips</div></div>
+        <div class="cov-card" data-cov="Personal Accident" onclick="toggleCov(this)"><i class="ti ti-first-aid-kit"></i><div class="cn" data-en="Personal Accident" data-id="Kecelakaan Diri">Personal Accident</div><div class="cd" data-en="Injury & disability cover" data-id="Cedera & cacat tetap">Injury &amp; disability cover</div></div>
+      </div>
+      <p class="err" id="errCov"></p>
+    </div>
+    <div class="btn-row">
+      <span style="font-size:12px;color:var(--text-3)" id="lbl_multisel">You can select multiple</span>
+      <button class="btn btn-p" onclick="goStep(2)"><span id="lbl_next1">Next</span> <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <!-- Step 2: Personal Details + Medical -->
+  <div id="step2" style="display:none">
+    <div class="panel">
+      <div class="ptitle"><i class="ti ti-user"></i><span id="lbl_dtitle">Tell us about yourself</span></div>
+      <div class="row2">
+        <div class="field"><label class="lbl" id="lbl_name">Full name</label><input type="text" id="fname" placeholder="e.g. Ahmad Rizal"/><p class="err" id="errName"></p></div>
+        <div class="field"><label class="lbl" id="lbl_dob">Date of birth</label><input type="date" id="fdob"/><p class="err" id="errDob"></p></div>
+      </div>
+      <div class="field">
+        <label class="lbl" id="lbl_gender">Gender</label>
+        <select id="fgender">
+          <option value="" id="opt_gender0">Select…</option>
+          <option id="opt_gender1">Male</option>
+          <option id="opt_gender2">Female</option>
+          <option id="opt_gender3">Prefer not to say</option>
+        </select>
+        <p class="err" id="errGender"></p>
+      </div>
+      <div class="field"><label class="lbl" id="lbl_occ">Occupation</label><input type="text" id="focc" placeholder="e.g. Software engineer"/></div>
+    </div>
+
+    <div class="panel">
+      <div class="ptitle"><i class="ti ti-medical-cross"></i><span id="lbl_med_title">Medical background</span></div>
+      <div class="field">
+        <label class="lbl" id="lbl_hosp_q">Have you been admitted to a hospital in the past 12 months?</label>
+        <div class="yn-row">
+          <button class="yn-btn" id="hosp_yes" onclick="setYN('hosp','yes')" type="button" id="lbl_yes1">Yes</button>
+          <button class="yn-btn" id="hosp_no" onclick="setYN('hosp','no')" type="button" id="lbl_no1">No</button>
+        </div>
+        <div class="warn-box" id="hosp_warn"><i class="ti ti-info-circle"></i><span id="lbl_hosp_warn">Please briefly describe the reason for your hospitalisation below. This helps us provide the most accurate quote — it will not automatically disqualify you.</span></div>
+        <textarea id="hosp_detail" placeholder="e.g. Appendectomy, recovered fully" style="display:none;margin-top:.5rem"></textarea>
+        <p class="err" id="errHosp"></p>
+      </div>
+      <div class="field" style="margin-top:.875rem">
+        <label class="lbl" id="lbl_illness_q">Is there any pre-existing illness or condition we should be aware of?</label>
+        <div class="yn-row">
+          <button class="yn-btn" id="illness_yes" onclick="setYN('illness','yes')" type="button">Yes</button>
+          <button class="yn-btn" id="illness_no" onclick="setYN('illness','no')" type="button">No</button>
+        </div>
+        <div class="warn-box" id="illness_warn"><i class="ti ti-info-circle"></i><span id="lbl_illness_warn">Please briefly describe the condition below. Disclosing this helps ensure your quote is valid and your coverage is not voided later.</span></div>
+        <textarea id="illness_detail" placeholder="e.g. Type 2 diabetes, managed with medication" style="display:none;margin-top:.5rem"></textarea>
+        <p class="err" id="errIllness"></p>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-g" onclick="goStep(1)"><i class="ti ti-arrow-left"></i> <span class="lbl-back">Back</span></button>
+      <button class="btn btn-p" onclick="goStep(3)"><span class="lbl-next">Next</span> <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <!-- Step 3: Coverage-specific Qs -->
+  <div id="step3" style="display:none">
+    <div id="covQsContainer"></div>
+    <div class="btn-row">
+      <button class="btn btn-g" onclick="goStep(2)"><i class="ti ti-arrow-left"></i> <span class="lbl-back">Back</span></button>
+      <button class="btn btn-p" onclick="goStep(4)"><span class="lbl-next">Next</span> <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <!-- Step 4: Contact -->
+  <div id="step4" style="display:none">
+    <div class="panel">
+      <div class="ptitle"><i class="ti ti-mail"></i><span id="lbl_ctitle">How should we send your quote?</span></div>
+      <div class="field"><label class="lbl" id="lbl_email">Email address</label><input type="email" id="femail" placeholder="you@email.com"/><p class="err" id="errEmail"></p></div>
+      <div class="field"><label class="lbl" id="lbl_wa">WhatsApp number <span style="color:var(--text-3);font-size:11px" id="lbl_opt">(optional)</span></label><input type="tel" id="fwa" placeholder="+62 812 3456 7890"/></div>
+      <div class="field">
+        <label class="lbl" id="lbl_pref">Preferred contact method</label>
+        <select id="fpref">
+          <option value="Email" id="opt_pref1">Email only</option>
+          <option value="WhatsApp" id="opt_pref2">WhatsApp only</option>
+          <option value="Either" id="opt_pref3">Either is fine</option>
+        </select>
+      </div>
+      <div class="notice"><i class="ti ti-info-circle"></i><span id="lbl_privacy">Your information is used only to prepare your quote. We will not share it or contact you unless you ask.</span></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-g" onclick="goStep(3)"><i class="ti ti-arrow-left"></i> <span class="lbl-back">Back</span></button>
+      <button class="btn btn-p" onclick="goStep(5)"><span id="lbl_review">Review summary</span> <i class="ti ti-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <!-- Step 5: Summary -->
+  <div id="step5" style="display:none">
+    <div class="panel">
+      <div class="ptitle"><i class="ti ti-clipboard-check"></i><span id="lbl_sumtitle">Review your information</span></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_scov">Coverage</span><span class="sum-val tags" id="sCov"></span></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_sname">Name</span><span class="sum-val" id="sName"></span></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_sdob">Date of birth</span><span class="sum-val" id="sDob"></span></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_sgender">Gender</span><span class="sum-val" id="sGender"></span></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_socc">Occupation</span><span class="sum-val" id="sOcc"></span></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_shosp">Hospital admission</span><span class="sum-val" id="sHosp"></span></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_sillness">Pre-existing illness</span><span class="sum-val" id="sIllness"></span></div>
+      <div id="covQsSumContainer"></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_semail">Email</span><span class="sum-val" id="sEmail"></span></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_swa">WhatsApp</span><span class="sum-val" id="sWa"></span></div>
+      <div class="sum-row"><span class="sum-lbl" id="lbl_spref">Contact via</span><span class="sum-val" id="sPref"></span></div>
+    </div>
+
+    <!-- Active consent checkbox -->
+    <label class="consent-box" id="consentBox">
+      <input type="checkbox" id="consentCheck" onchange="updateConsentStyle()"/>
+      <span id="lbl_consent">I confirm that all information I have provided is true and accurate to the best of my knowledge. I understand that providing false or incomplete information may affect the validity of my coverage.</span>
+    </label>
+    <p class="err" id="errConsent" style="margin-bottom:.5rem"></p>
+
+    <div class="btn-row">
+      <button class="btn btn-g" onclick="goStep(4)"><i class="ti ti-arrow-left"></i> <span class="lbl-back">Back</span></button>
+      <button class="btn btn-p" onclick="submitQuote()" id="submitBtn"><i class="ti ti-send"></i> <span id="lbl_submit">Submit &amp; get quote</span></button>
+    </div>
+    <p id="submitErr"></p>
+  </div>
+
+  <!-- Step 6: Success -->
+  <div id="step6" style="display:none">
+    <div class="panel ok">
+      <div class="ok-icon"><i class="ti ti-check"></i></div>
+      <h2 id="lbl_ok_title">Your quote request is in!</h2>
+      <p id="lbl_ok_body">We'll prepare a personalised Allianz quote and send it to you shortly.</p>
+      <div class="ok-detail">
+        <div><i class="ti ti-mail"></i><span id="lbl_ok_email_sent">A confirmation has been sent to your email.</span></div>
+        <div style="margin-top:6px"><i class="ti ti-clock"></i><span id="lbl_ok_time">Expect your quote within 24 hours.</span></div>
+        <div style="margin-top:6px"><i class="ti ti-message-circle"></i><span id="lbl_ok_wa">Have questions? WhatsApp us anytime.</span></div>
+      </div>
+      <div style="margin-top:1.75rem;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-g" onclick="restart()"><i class="ti ti-refresh"></i> <span id="lbl_restart">Get another quote</span></button>
+        <button class="btn btn-p" onclick="showLanding()"><i class="ti ti-home"></i> <span id="lbl_back_home">Back to home</span></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /page-quote -->
+
+<script>
+// ── EmailJS ──────────────────────────────────────────────────────────────
+var EJ_PUBLIC_KEY  = 'GSBp12YHh1ZM3k78g';
+var EJ_SERVICE_ID  = 'service_7gi58o7';
+var EJ_TEMPLATE_ID = 'template_17qwtln';
+// Auto-reply template — create a second EmailJS template and paste its ID here:
+var EJ_AUTOREPLY_TEMPLATE_ID = 'template_1pp00je'; // e.g. 'template_autoreply'
+// Your WhatsApp number for the float button — replace with your real number:
+var WA_NUMBER = '6281809002206'; // e.g. '6281234567890'
+emailjs.init(EJ_PUBLIC_KEY);
+document.querySelector('.wa-float').href = 'https://wa.me/' + WA_NUMBER;
+
+// ── State ────────────────────────────────────────────────────────────────
+var lang = 'en';
+var selected = [];
+var covQAnswers = {};
+var ynState = { hosp: null, illness: null };
+var TOTAL_STEPS = 5;
+
+// ── Pages ────────────────────────────────────────────────────────────────
+function showLanding(){
+  document.getElementById('page-landing').style.display='block';
+  document.getElementById('page-quote').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showQuote(){
+  document.getElementById('page-landing').style.display='none';
+  document.getElementById('page-quote').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Translations ─────────────────────────────────────────────────────────
+var T={
+en:{
+  powered:'Powered by Allianz',nav_cta:'Get a Quote',wa_float:'Chat with us first',
+  badge:'Official Allianz Partner',
+  hero_h1:'Insurance that works <em>for you</em>,<br>not around you.',
+  hero_p:'Get a personalised Allianz quote in minutes. No agents hunting you down. No pressure. Just clear coverage, done your way.',
+  hero_cta:'Get my free quote',hero_learn:'How it works',
+  trust1:'Data secured & private',trust2:'No agent follow-up unless you want it',trust3:'Quote in under 3 minutes',trust4:'Genuine Allianz products',
+  how_title:'How it works',how_sub:'Three simple steps — no phone calls, no back-and-forth.',
+  how1_title:'Pick your coverage',how1_body:'Choose from Life, Health, Vehicle, Buildings, Travel, or Personal Accident — or any combination.',
+  how2_title:'Share a few details',how2_body:"Fill in basic information so we can tailor your quote. Skip anything you're unsure about — we'll follow up if needed.",
+  how3_title:'Receive your quote',how3_body:'We send a personalised Allianz quote to your email or WhatsApp. Review at your own pace — no pressure, ever.',
+  cov_title:'What we cover',cov_sub:'Comprehensive Allianz protection across six categories.',
+  fc_life:'Life',fd_life:'Financial security for your loved ones when it matters most',
+  fc_health:'Health',fd_health:'Hospitalisation & medical coverage across Indonesia',
+  fc_vehicle:'Vehicle',fd_vehicle:'TLO or All Risk for cars & motorcycles',
+  fc_buildings:'Buildings',fd_buildings:'Protect your home, apartment, or property',
+  fc_travel:'Travel',fd_travel:'Domestic and international travel protection',
+  fc_pa:'Personal Accident',fd_pa:'Injury & disability cover for everyday life',
+  testi_title:'What people are saying',testi_sub:'Real quotes from people who chose the easy way.',
+  testi1_body:'"I\'ve always avoided insurance because I hated the agent calls. This was completely different — I filled it in myself and got a proper quote by email the same day."',
+  testi1_name:'Reza A.',testi1_meta:'Health & Life coverage · Jakarta',
+  testi2_body:'"Super easy to use. I wasn\'t sure about some of the details so I skipped them and was contacted nicely — no pressure at all."',
+  testi2_name:'Dian S.',testi2_meta:'Vehicle coverage · Surabaya',
+  testi3_body:'"Finally a way to get insured without someone calling me every day. The quote was clear and I understood exactly what I was getting."',
+  testi3_name:'Maya P.',testi3_meta:'Travel & Personal Accident · Bali',
+  testi_note:'* Testimonials are illustrative. Replace with real customer feedback once collected.',
+  why_title:'Why SecureEasy?',why_sub:'Getting insured should feel effortless — not stressful.',
+  why1_title:'No agent pressure',why1_body:'Explore, compare, and decide entirely on your own terms. We only reach out if you want us to.',
+  why2_title:'Transparent quotes',why2_body:"Your quote is based on your actual details — not a generic estimate. What you see is what you get from Allianz.",
+  why3_title:'Your data stays yours',why3_body:"We collect only what's needed for your quote. We never sell or share your information.",
+  why4_title:'Help when you need it',why4_body:'Have questions? Reach out via WhatsApp and a real person will assist — without the hard sell.',
+  cta_title:'Ready to protect what matters?',cta_sub:'It takes less than 3 minutes. No commitment required.',cta_btn:'Get my free quote →',
+  footer_allianz:'Powered by Allianz',footer_note:'All information is handled securely and used only to prepare your quote.',
+  q_h1:'Get your personalised quote',q_sub:'No agents. No calls. Just honest coverage, done easy.',
+  s1:'Coverage',s2:'Details',s3:'Coverage Info',s4:'Contact',s5:'Summary',
+  covtitle:'What would you like to protect?',multisel:'You can select multiple',
+  dtitle:'Tell us about yourself',name:'Full name',dob:'Date of birth',gender:'Gender',occ:'Occupation',
+  med_title:'Medical background',
+  hosp_q:'Have you been admitted to a hospital in the past 12 months?',
+  hosp_warn:'Please briefly describe the reason for your hospitalisation below. This helps us provide the most accurate quote — it will not automatically disqualify you.',
+  illness_q:'Is there any pre-existing illness or condition we should be aware of?',
+  illness_warn:'Please briefly describe the condition below. Disclosing this helps ensure your quote is valid and your coverage is not voided later.',
+  yes:'Yes',no:'No',
+  ctitle:'How should we send your quote?',email:'Email address',wa:'WhatsApp number',opt:'(optional)',pref:'Preferred contact method',
+  privacy:'Your information is used only to prepare your quote. We will not share it or contact you unless you ask.',
+  sumtitle:'Review your information',
+  scov:'Coverage',sname:'Name',sdob:'Date of birth',sgender:'Gender',socc:'Occupation',
+  shosp:'Hospital admission (12mo)',sillness:'Pre-existing illness',
+  semail:'Email',swa:'WhatsApp',spref:'Contact via',
+  consent:'I confirm that all information I have provided is true and accurate to the best of my knowledge. I understand that providing false or incomplete information may affect the validity of my coverage.',
+  review:'Review summary',submit:'Submit & get quote',back:'Back',next:'Next',
+  ok_title:"Your quote request is in!",
+  ok_body:"We'll prepare a personalised Allianz quote and send it to <strong>$$</strong>.",
+  ok_email_sent:'A confirmation has been sent to your email.',
+  ok_time:'Expect your quote within 24 hours.',
+  ok_wa:'Have questions? WhatsApp us anytime.',
+  restart:'Get another quote',back_home:'Back to home',
+  opt_gender0:'Select…',opt_gender1:'Male',opt_gender2:'Female',opt_gender3:'Prefer not to say',
+  opt_pref1:'Email only',opt_pref2:'WhatsApp only',opt_pref3:'Either is fine',
+  errCov:'Please select at least one coverage type.',
+  errName:'Please enter your full name.',errDob:'Please enter your date of birth.',errGender:'Please select your gender.',
+  errHosp:'Please answer the hospital admission question.',errIllness:'Please answer the pre-existing illness question.',
+  errEmail:'Please enter a valid email address.',errConsent:'Please confirm the accuracy of your information before submitting.',
+  skip:"I'll fill these in later — you can contact me directly",
+  lbl_Life:'Life',lbl_Health:'Health',lbl_Vehicle:'Vehicle',lbl_Buildings:'Buildings',lbl_Travel:'Travel',lbl_PersonalAccident:'Personal Accident',
+  sending:'Sending…',send_failed:'Failed to send. Please try again.',
+  step_of:'Step $1 of $2',skipped_flag:'⚠ Skipped — follow up needed',
+},
+id:{
+  powered:'Didukung oleh Allianz',nav_cta:'Dapatkan Penawaran',wa_float:'Chat dulu dengan kami',
+  badge:'Mitra Resmi Allianz',
+  hero_h1:'Asuransi yang bekerja <em>untuk Anda</em>,<br>bukan sebaliknya.',
+  hero_p:'Dapatkan penawaran Allianz dalam hitungan menit. Tanpa agen yang mengejar. Tanpa tekanan. Perlindungan yang jelas, sesuai keinginan Anda.',
+  hero_cta:'Dapatkan penawaran gratis',hero_learn:'Cara kerjanya',
+  trust1:'Data aman & privat',trust2:'Tidak ada agen yang menghubungi tanpa izin',trust3:'Penawaran dalam 3 menit',trust4:'Produk Allianz asli',
+  how_title:'Cara kerjanya',how_sub:'Tiga langkah mudah — tanpa telepon, tanpa bolak-balik.',
+  how1_title:'Pilih perlindungan',how1_body:'Pilih dari Jiwa, Kesehatan, Kendaraan, Properti, Perjalanan, atau Kecelakaan Diri — atau kombinasi apa saja.',
+  how2_title:'Isi beberapa detail',how2_body:'Isi informasi dasar agar kami bisa menyesuaikan penawaran. Lewati yang belum Anda tahu — kami akan menghubungi jika diperlukan.',
+  how3_title:'Terima penawaran Anda',how3_body:'Kami mengirimkan penawaran Allianz ke email atau WhatsApp Anda. Tinjau dengan tenang — tidak ada tekanan.',
+  cov_title:'Yang kami lindungi',cov_sub:'Paket perlindungan Allianz di enam kategori.',
+  fc_life:'Jiwa',fd_life:'Keamanan finansial untuk orang yang Anda cintai',
+  fc_health:'Kesehatan',fd_health:'Rawat inap & medis di seluruh Indonesia',
+  fc_vehicle:'Kendaraan',fd_vehicle:'TLO atau All Risk untuk mobil & motor',
+  fc_buildings:'Properti',fd_buildings:'Lindungi rumah, apartemen, atau properti Anda',
+  fc_travel:'Perjalanan',fd_travel:'Perlindungan perjalanan domestik & internasional',
+  fc_pa:'Kecelakaan Diri',fd_pa:'Perlindungan cedera & cacat sehari-hari',
+  testi_title:'Yang orang katakan',testi_sub:'Dari mereka yang memilih cara yang mudah.',
+  testi1_body:'"Saya selalu menghindari asuransi karena tidak suka ditelpon agen. Ini sama sekali berbeda — saya isi sendiri dan dapat penawaran via email hari itu juga."',
+  testi1_name:'Reza A.',testi1_meta:'Kesehatan & Jiwa · Jakarta',
+  testi2_body:'"Sangat mudah digunakan. Saya tidak yakin dengan beberapa detail jadi saya lewati, dan dihubungi dengan sopan — tanpa tekanan sama sekali."',
+  testi2_name:'Dian S.',testi2_meta:'Kendaraan · Surabaya',
+  testi3_body:'"Akhirnya ada cara untuk berasuransi tanpa ada yang menelepon setiap hari. Penawarannya jelas dan saya tahu persis apa yang saya dapatkan."',
+  testi3_name:'Maya P.',testi3_meta:'Perjalanan & Kecelakaan Diri · Bali',
+  testi_note:'* Testimoni bersifat ilustratif. Ganti dengan ulasan pelanggan nyata setelah terkumpul.',
+  why_title:'Mengapa SecureEasy?',why_sub:'Mendapatkan asuransi seharusnya mudah — bukan menegangkan.',
+  why1_title:'Tanpa tekanan agen',why1_body:'Jelajahi, bandingkan, dan putuskan sepenuhnya sesuai keinginan Anda. Kami hanya menghubungi jika Anda minta.',
+  why2_title:'Penawaran transparan',why2_body:'Penawaran didasarkan pada detail nyata Anda — bukan estimasi umum.',
+  why3_title:'Data Anda tetap milik Anda',why3_body:'Kami hanya mengumpulkan yang diperlukan. Kami tidak pernah menjual atau berbagi informasi Anda.',
+  why4_title:'Bantuan saat dibutuhkan',why4_body:'Ada pertanyaan? Hubungi via WhatsApp dan orang nyata akan membantu — tanpa hard sell.',
+  cta_title:'Siap melindungi yang penting?',cta_sub:'Butuh kurang dari 3 menit. Tidak ada komitmen.',cta_btn:'Dapatkan penawaran gratis →',
+  footer_allianz:'Didukung oleh Allianz',footer_note:'Semua informasi ditangani dengan aman dan hanya untuk menyiapkan penawaran Anda.',
+  q_h1:'Dapatkan penawaran harga Anda',q_sub:'Tanpa agen. Tanpa telepon. Asuransi yang jelas dan mudah.',
+  s1:'Perlindungan',s2:'Data Diri',s3:'Info Lanjutan',s4:'Kontak',s5:'Ringkasan',
+  covtitle:'Apa yang ingin Anda lindungi?',multisel:'Anda bisa pilih lebih dari satu',
+  dtitle:'Ceritakan tentang diri Anda',name:'Nama lengkap',dob:'Tanggal lahir',gender:'Jenis kelamin',occ:'Pekerjaan',
+  med_title:'Riwayat medis',
+  hosp_q:'Apakah Anda pernah dirawat di rumah sakit dalam 12 bulan terakhir?',
+  hosp_warn:'Mohon deskripsikan singkat alasan rawat inap Anda di bawah. Ini membantu kami memberikan penawaran paling akurat — ini tidak otomatis mendiskualifikasi Anda.',
+  illness_q:'Apakah ada penyakit atau kondisi yang sudah ada sebelumnya yang perlu kami ketahui?',
+  illness_warn:'Mohon deskripsikan singkat kondisi tersebut. Pengungkapan ini memastikan penawaran Anda valid dan perlindungan tidak dibatalkan di kemudian hari.',
+  yes:'Ya',no:'Tidak',
+  ctitle:'Bagaimana kami mengirimkan penawaran Anda?',email:'Alamat email',wa:'Nomor WhatsApp',opt:'(opsional)',pref:'Metode kontak yang disukai',
+  privacy:'Informasi Anda hanya untuk menyiapkan penawaran. Kami tidak akan berbagi atau menghubungi tanpa izin.',
+  sumtitle:'Periksa informasi Anda',
+  scov:'Perlindungan',sname:'Nama',sdob:'Tanggal lahir',sgender:'Jenis kelamin',socc:'Pekerjaan',
+  shosp:'Rawat inap (12 bln)',sillness:'Penyakit bawaan',
+  semail:'Email',swa:'WhatsApp',spref:'Kontak via',
+  consent:'Saya menyatakan bahwa semua informasi yang saya berikan adalah benar dan akurat sepengetahuan saya. Saya memahami bahwa memberikan informasi yang salah atau tidak lengkap dapat mempengaruhi keabsahan perlindungan saya.',
+  review:'Tinjau ringkasan',submit:'Kirim & dapatkan penawaran',back:'Kembali',next:'Lanjut',
+  ok_title:'Permintaan penawaran Anda diterima!',
+  ok_body:'Kami akan menyiapkan penawaran Allianz dan mengirimkannya ke <strong>$$</strong>.',
+  ok_email_sent:'Konfirmasi telah dikirim ke email Anda.',
+  ok_time:'Perkirakan penawaran dalam 24 jam.',
+  ok_wa:'Ada pertanyaan? WhatsApp kami kapan saja.',
+  restart:'Dapatkan penawaran lain',back_home:'Kembali ke beranda',
+  opt_gender0:'Pilih…',opt_gender1:'Laki-laki',opt_gender2:'Perempuan',opt_gender3:'Tidak ingin menyebutkan',
+  opt_pref1:'Email saja',opt_pref2:'WhatsApp saja',opt_pref3:'Keduanya boleh',
+  errCov:'Pilih setidaknya satu jenis perlindungan.',
+  errName:'Masukkan nama lengkap Anda.',errDob:'Masukkan tanggal lahir Anda.',errGender:'Pilih jenis kelamin Anda.',
+  errHosp:'Mohon jawab pertanyaan rawat inap.',errIllness:'Mohon jawab pertanyaan penyakit bawaan.',
+  errEmail:'Masukkan alamat email yang valid.',errConsent:'Mohon konfirmasi keakuratan informasi Anda sebelum mengirimkan.',
+  skip:'Saya isi nanti — Anda bisa hubungi saya langsung',
+  lbl_Life:'Jiwa',lbl_Health:'Kesehatan',lbl_Vehicle:'Kendaraan',lbl_Buildings:'Properti',lbl_Travel:'Perjalanan',lbl_PersonalAccident:'Kecelakaan Diri',
+  sending:'Mengirim…',send_failed:'Gagal mengirim. Silakan coba lagi.',
+  step_of:'Langkah $1 dari $2',skipped_flag:'⚠ Dilewati — perlu tindak lanjut',
+}
+};
+
+// ── Coverage questions ───────────────────────────────────────────────────
+var COV_Q={
+  Life:{
+    en:[{id:'life_sum',lbl:'Coverage amount needed',type:'select',opts:['Not sure yet','< Rp 500 juta','Rp 500 juta – 1 miliar','> Rp 1 miliar']},{id:'life_dep',lbl:'Number of dependants',type:'select',opts:['None','1','2','3','4+']}],
+    id:[{id:'life_sum',lbl:'Jumlah pertanggungan yang diinginkan',type:'select',opts:['Belum tahu','< Rp 500 juta','Rp 500 juta – 1 miliar','> Rp 1 miliar']},{id:'life_dep',lbl:'Jumlah tanggungan',type:'select',opts:['Tidak ada','1','2','3','4+']}]
+  },
+  Health:{
+    en:[{id:'health_class',lbl:'Preferred hospital class',type:'select',opts:['Not sure yet','VIP (1 Room, 1 Bed)','Non-VIP (1 Room, 2 Beds or more)']},{id:'health_scope',lbl:'Coverage scope',type:'select',opts:['Not sure yet','Indonesia Only','Indonesia + Asia (excl. SG, HK & JP)','Indonesia + Asia (incl. SG, HK & JP)','Indonesia + Asia + Australia']}],
+    id:[{id:'health_class',lbl:'Kelas rumah sakit yang diinginkan',type:'select',opts:['Belum tahu','VIP (1 Kamar, 1 Tempat Tidur)','Non-VIP (1 Kamar, 2 Tempat Tidur atau lebih)']},{id:'health_scope',lbl:'Lingkup perlindungan',type:'select',opts:['Belum tahu','Indonesia Saja','Indonesia + Asia (kecuali SG, HK & JP)','Indonesia + Asia (termasuk SG, HK & JP)','Indonesia + Asia + Australia']}]
+  },
+  Vehicle:{
+    en:[{id:'veh_type',lbl:'Vehicle type',type:'select',opts:['Not sure yet','Car','Motorcycle','Both']},{id:'veh_brand',lbl:'Vehicle brand',type:'text',ph:'e.g. Toyota, Honda, Yamaha'},{id:'veh_model',lbl:'Vehicle model',type:'text',ph:'e.g. Avanza, Civic, NMAX'},{id:'veh_variant',lbl:'Variant / type',type:'text',ph:'e.g. G Manual, 1.5 CVT, Standard'},{id:'veh_year',lbl:'Vehicle year',type:'text',ph:'e.g. 2021'},{id:'veh_plan',lbl:'Coverage plan',type:'select',opts:['Not sure yet','Total Loss Only (TLO)','All Risk / Comprehensive']}],
+    id:[{id:'veh_type',lbl:'Jenis kendaraan',type:'select',opts:['Belum tahu','Mobil','Sepeda motor','Keduanya']},{id:'veh_brand',lbl:'Merek kendaraan',type:'text',ph:'cth. Toyota, Honda, Yamaha'},{id:'veh_model',lbl:'Model kendaraan',type:'text',ph:'cth. Avanza, Civic, NMAX'},{id:'veh_variant',lbl:'Varian / tipe',type:'text',ph:'cth. G Manual, 1.5 CVT, Standard'},{id:'veh_year',lbl:'Tahun kendaraan',type:'text',ph:'cth. 2021'},{id:'veh_plan',lbl:'Jenis perlindungan',type:'select',opts:['Belum tahu','Total Loss Only (TLO)','All Risk / Komprehensif']}]
+  },
+  Buildings:{
+    en:[{id:'bld_type',lbl:'Property type',type:'select',opts:['Not sure yet','House','Apartment','Shop / Office','Other']},{id:'bld_val',lbl:'Estimated property value',type:'select',opts:['Not sure yet','< Rp 500 juta','Rp 500 juta – 1 miliar','Rp 1 – 5 miliar','> Rp 5 miliar']}],
+    id:[{id:'bld_type',lbl:'Jenis properti',type:'select',opts:['Belum tahu','Rumah','Apartemen','Toko / Kantor','Lainnya']},{id:'bld_val',lbl:'Perkiraan nilai properti',type:'select',opts:['Belum tahu','< Rp 500 juta','Rp 500 juta – 1 miliar','Rp 1 – 5 miliar','> Rp 5 miliar']}]
+  },
+  Travel:{
+    en:[{id:'trv_dest',lbl:'Destination region',type:'select',opts:['Not sure yet','Domestic (Indonesia)','Asia Pacific','Worldwide (excl. USA)','Worldwide (incl. USA)']},{id:'trv_freq',lbl:'Travel frequency',type:'select',opts:['Not sure yet','Single trip','Annual multi-trip']}],
+    id:[{id:'trv_dest',lbl:'Tujuan perjalanan',type:'select',opts:['Belum tahu','Dalam negeri','Asia Pasifik','Seluruh dunia (kecuali AS)','Seluruh dunia (termasuk AS)']},{id:'trv_freq',lbl:'Frekuensi perjalanan',type:'select',opts:['Belum tahu','Satu perjalanan','Multi-trip tahunan']}]
+  },
+  'Personal Accident':{
+    en:[{id:'pa_risk',lbl:'Job risk level',type:'select',opts:['Not sure yet','Low (office / desk)','Medium (outdoor / sales)','High (manual / field work)']},{id:'pa_sum',lbl:'Coverage amount',type:'select',opts:['Not sure yet','< Rp 100 juta','Rp 100 – 500 juta','> Rp 500 juta']}],
+    id:[{id:'pa_risk',lbl:'Tingkat risiko pekerjaan',type:'select',opts:['Belum tahu','Rendah (kantor / meja)','Sedang (luar ruangan / sales)','Tinggi (lapangan / manual)']},{id:'pa_sum',lbl:'Jumlah pertanggungan',type:'select',opts:['Belum tahu','< Rp 100 juta','Rp 100 – 500 juta','> Rp 500 juta']}]
+  }
+};
+var COV_ICONS={Life:'heart-handshake',Health:'stethoscope',Vehicle:'car',Buildings:'building',Travel:'plane','Personal Accident':'first-aid-kit'};
+
+// ── Language ─────────────────────────────────────────────────────────────
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.textContent.trim()===l.toUpperCase());});
+  applyLang();
+}
+function t(k){return T[lang][k]!==undefined?T[lang][k]:(T.en[k]||'');}
+
+var STATIC_IDS={
+  powered:'lbl_powered',nav_cta:'lbl_nav_cta',wa_float:'lbl_wa_float',badge:'lbl_badge',
+  hero_p:'lbl_hero_p',hero_cta:'lbl_hero_cta',hero_learn:'lbl_hero_learn',
+  trust1:'lbl_trust1',trust2:'lbl_trust2',trust3:'lbl_trust3',trust4:'lbl_trust4',
+  how_title:'lbl_how_title',how_sub:'lbl_how_sub',
+  how1_title:'lbl_how1_title',how1_body:'lbl_how1_body',
+  how2_title:'lbl_how2_title',how2_body:'lbl_how2_body',
+  how3_title:'lbl_how3_title',how3_body:'lbl_how3_body',
+  cov_title:'lbl_cov_title',cov_sub:'lbl_cov_sub',
+  fc_life:'lbl_fc_life',fd_life:'lbl_fd_life',fc_health:'lbl_fc_health',fd_health:'lbl_fd_health',
+  fc_vehicle:'lbl_fc_vehicle',fd_vehicle:'lbl_fd_vehicle',fc_buildings:'lbl_fc_buildings',fd_buildings:'lbl_fd_buildings',
+  fc_travel:'lbl_fc_travel',fd_travel:'lbl_fd_travel',fc_pa:'lbl_fc_pa',fd_pa:'lbl_fd_pa',
+  testi_title:'lbl_testi_title',testi_sub:'lbl_testi_sub',
+  testi1_body:'lbl_testi1_body',testi1_name:'lbl_testi1_name',testi1_meta:'lbl_testi1_meta',
+  testi2_body:'lbl_testi2_body',testi2_name:'lbl_testi2_name',testi2_meta:'lbl_testi2_meta',
+  testi3_body:'lbl_testi3_body',testi3_name:'lbl_testi3_name',testi3_meta:'lbl_testi3_meta',
+  testi_note:'lbl_testi_note',
+  why_title:'lbl_why_title',why_sub:'lbl_why_sub',
+  why1_title:'lbl_why1_title',why1_body:'lbl_why1_body',
+  why2_title:'lbl_why2_title',why2_body:'lbl_why2_body',
+  why3_title:'lbl_why3_title',why3_body:'lbl_why3_body',
+  why4_title:'lbl_why4_title',why4_body:'lbl_why4_body',
+  cta_title:'lbl_cta_title',cta_sub:'lbl_cta_sub',cta_btn:'lbl_cta_btn',
+  footer_allianz:'lbl_footer_allianz',footer_note:'lbl_footer_note',
+  q_h1:'lbl_q_h1',q_sub:'lbl_q_sub',
+  s1:'lbl_s1',s2:'lbl_s2',s3:'lbl_s3',s4:'lbl_s4',s5:'lbl_s5',
+  covtitle:'lbl_covtitle',multisel:'lbl_multisel',
+  dtitle:'lbl_dtitle',name:'lbl_name',dob:'lbl_dob',gender:'lbl_gender',occ:'lbl_occ',
+  med_title:'lbl_med_title',hosp_q:'lbl_hosp_q',hosp_warn:'lbl_hosp_warn',
+  illness_q:'lbl_illness_q',illness_warn:'lbl_illness_warn',
+  ctitle:'lbl_ctitle',email:'lbl_email',wa:'lbl_wa',opt:'lbl_opt',pref:'lbl_pref',
+  privacy:'lbl_privacy',sumtitle:'lbl_sumtitle',
+  scov:'lbl_scov',sname:'lbl_sname',sdob:'lbl_sdob',sgender:'lbl_sgender',socc:'lbl_socc',
+  shosp:'lbl_shosp',sillness:'lbl_sillness',
+  semail:'lbl_semail',swa:'lbl_swa',spref:'lbl_spref',
+  consent:'lbl_consent',review:'lbl_review',submit:'lbl_submit',
+  ok_title:'lbl_ok_title',ok_email_sent:'lbl_ok_email_sent',ok_time:'lbl_ok_time',ok_wa:'lbl_ok_wa',
+  restart:'lbl_restart',back_home:'lbl_back_home'
+};
+var HTML_KEYS=['hero_h1','hero_p','ok_body'];
+
+function applyLang(){
+  Object.keys(STATIC_IDS).forEach(function(k){
+    var el=document.getElementById(STATIC_IDS[k]);if(!el)return;
+    if(HTML_KEYS.indexOf(k)>-1)el.innerHTML=t(k);
+    else el.textContent=t(k);
+  });
+  ['opt_gender0','opt_gender1','opt_gender2','opt_gender3','opt_pref1','opt_pref2','opt_pref3'].forEach(function(k){
+    var el=document.getElementById(k);if(el)el.textContent=t(k);
+  });
+  document.querySelectorAll('[data-en]').forEach(function(el){el.textContent=lang==='id'?el.dataset.id:el.dataset.en;});
+  document.querySelectorAll('.lbl-back').forEach(function(b){b.textContent=t('back');});
+  document.querySelectorAll('.lbl-next').forEach(function(b){b.textContent=t('next');});
+  // yn buttons
+  ['hosp_yes','hosp_no','illness_yes','illness_no'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.textContent=id.endsWith('_yes')?t('yes'):t('no');
+  });
+  rebuildCovQs();
+  updateMobileBar(currentStep);
+}
+
+// ── YN Toggle ────────────────────────────────────────────────────────────
+function setYN(field, val){
+  ynState[field]=val;
+  var yBtn=document.getElementById(field+'_yes');
+  var nBtn=document.getElementById(field+'_no');
+  yBtn.className='yn-btn'+(val==='yes'?' sel-yes':'');
+  nBtn.className='yn-btn'+(val==='no'?' sel-no':'');
+  var warn=document.getElementById(field+'_warn');
+  var detail=document.getElementById(field+'_detail');
+  if(val==='yes'){warn.style.display='block';detail.style.display='block';}
+  else{warn.style.display='none';detail.style.display='none';}
+  showErr('err'+field.charAt(0).toUpperCase()+field.slice(1),false);
+}
+
+function updateConsentStyle(){
+  var cb=document.getElementById('consentCheck');
+  var box=document.getElementById('consentBox');
+  box.classList.toggle('err-consent',false);
+  showErr('errConsent',false);
+}
+
+// ── Coverage toggle ──────────────────────────────────────────────────────
+function toggleCov(el){
+  var cov=el.dataset.cov;
+  var idx=selected.indexOf(cov);
+  if(idx>-1){selected.splice(idx,1);el.classList.remove('sel');}
+  else{selected.push(cov);el.classList.add('sel');}
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────
+function showErr(id,show,msg){var el=document.getElementById(id);if(!el)return;el.style.display=show?'block':'none';if(show&&msg)el.textContent=msg;}
+function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+
+// ── Mobile step bar ──────────────────────────────────────────────────────
+var currentStep=1;
+var STEP_NAMES=['s1','s2','s3','s4','s5'];
+function updateMobileBar(n){
+  currentStep=n;
+  var dotsEl=document.getElementById('sbmDots');
+  var labelEl=document.getElementById('sbmLabel');
+  var countEl=document.getElementById('sbmCount');
+  if(!dotsEl)return;
+  dotsEl.innerHTML='';
+  for(var i=1;i<=TOTAL_STEPS;i++){
+    var d=document.createElement('div');
+    d.className='sbm-dot'+(i<n?' done':i===n?' active':'');
+    dotsEl.appendChild(d);
+  }
+  if(labelEl)labelEl.textContent=t(STEP_NAMES[Math.min(n,5)-1]);
+  if(countEl)countEl.textContent=t('step_of').replace('$1',n).replace('$2',TOTAL_STEPS);
+}
+
+// ── Step navigation ──────────────────────────────────────────────────────
+function goStep(n){
+  if(n===2){
+    if(!selected.length){showErr('errCov',true,t('errCov'));return;}
+    showErr('errCov',false);
+  }
+  if(n===3){
+    var ok=true;
+    if(!val('fname')){showErr('errName',true,t('errName'));ok=false;}else showErr('errName',false);
+    if(!val('fdob')){showErr('errDob',true,t('errDob'));ok=false;}else showErr('errDob',false);
+    if(!val('fgender')){showErr('errGender',true,t('errGender'));ok=false;}else showErr('errGender',false);
+    if(!ynState.hosp){showErr('errHosp',true,t('errHosp'));ok=false;}else showErr('errHosp',false);
+    if(!ynState.illness){showErr('errIllness',true,t('errIllness'));ok=false;}else showErr('errIllness',false);
+    if(!ok)return;
+    rebuildCovQs();
+  }
+  if(n===5){
+    var email=val('femail');
+    if(!email||!/^[^@]+@[^@]+\.[^@]+$/.test(email)){showErr('errEmail',true,t('errEmail'));return;}
+    showErr('errEmail',false);
+    fillSummary();
+  }
+  for(var i=1;i<=6;i++){var el=document.getElementById('step'+i);if(el)el.style.display=(i===n)?'block':'none';}
+  updateBar(n);
+  updateMobileBar(n);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Coverage Qs builder ──────────────────────────────────────────────────
+function rebuildCovQs(){
+  var container=document.getElementById('covQsContainer');if(!container)return;
+  container.innerHTML='';
+  selected.forEach(function(cov){
+    var qs=COV_Q[cov]?(COV_Q[cov][lang]||COV_Q[cov].en):[];
+    var skip=!!covQAnswers[cov+'_skip'];
+    var div=document.createElement('div');div.className='panel';div.style.marginBottom='.875rem';
+    var title=document.createElement('div');title.className='ptitle';
+    title.innerHTML='<i class="ti ti-'+COV_ICONS[cov]+'"></i>'+t('lbl_'+cov.replace(' ',''));
+    div.appendChild(title);
+    qs.forEach(function(q){
+      var fd=document.createElement('div');fd.className='field';
+      var lbl=document.createElement('label');lbl.className='lbl';lbl.textContent=q.lbl;fd.appendChild(lbl);
+      if(q.type==='select'){
+        var sel=document.createElement('select');sel.id='cq_'+q.id;sel.disabled=skip;
+        q.opts.forEach(function(o){var op=document.createElement('option');op.textContent=o;sel.appendChild(op);});
+        if(covQAnswers[q.id])sel.value=covQAnswers[q.id];
+        sel.onchange=function(){covQAnswers[q.id]=sel.value;};fd.appendChild(sel);
+      }else{
+        var inp=document.createElement('input');inp.type='text';inp.id='cq_'+q.id;inp.placeholder=q.ph||'';inp.disabled=skip;
+        if(covQAnswers[q.id])inp.value=covQAnswers[q.id];
+        inp.oninput=function(){covQAnswers[q.id]=inp.value;};fd.appendChild(inp);
+      }
+      div.appendChild(fd);
+    });
+    var skipLabel=document.createElement('label');skipLabel.className='skip-row';
+    var cb=document.createElement('input');cb.type='checkbox';cb.checked=skip;
+    cb.onchange=function(){
+      covQAnswers[cov+'_skip']=cb.checked;
+      div.querySelectorAll('select,input:not([type=checkbox])').forEach(function(f){f.disabled=cb.checked;});
+    };
+    var skipSpan=document.createElement('span');skipSpan.textContent=t('skip');
+    skipLabel.appendChild(cb);skipLabel.appendChild(skipSpan);
+    div.appendChild(skipLabel);
+    container.appendChild(div);
+  });
+}
+
+// ── Fill summary ─────────────────────────────────────────────────────────
+function fillSummary(){
+  document.getElementById('sCov').innerHTML=selected.map(function(c){return'<span class="tag">'+c+'</span>';}).join('');
+  document.getElementById('sName').textContent=val('fname');
+  var dob=document.getElementById('fdob').value;
+  document.getElementById('sDob').textContent=dob?new Date(dob).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'-';
+  document.getElementById('sGender').textContent=val('fgender')||'-';
+  document.getElementById('sOcc').textContent=val('focc')||'-';
+
+  // Medical summary
+  var hospVal=ynState.hosp==='yes'?(t('yes')+(val('hosp_detail')?' — '+val('hosp_detail'):'')):ynState.hosp==='no'?t('no'):'-';
+  var illnessVal=ynState.illness==='yes'?(t('yes')+(val('illness_detail')?' — '+val('illness_detail'):'')):ynState.illness==='no'?t('no'):'-';
+  document.getElementById('sHosp').textContent=hospVal;
+  document.getElementById('sIllness').textContent=illnessVal;
+
+  document.getElementById('sEmail').textContent=val('femail');
+  document.getElementById('sWa').textContent=val('fwa')||'-';
+  document.getElementById('sPref').textContent=val('fpref');
+
+  var qSum=document.getElementById('covQsSumContainer');qSum.innerHTML='';
+  selected.forEach(function(cov){
+    var qs=COV_Q[cov]?COV_Q[cov].en:[];
+    if(covQAnswers[cov+'_skip']){
+      qSum.innerHTML+='<div class="sum-row"><span class="sum-lbl">'+cov+'</span><span class="sum-val skipped">'+t('skipped_flag')+'</span></div>';
+    }else{
+      qs.forEach(function(q){qSum.innerHTML+='<div class="sum-row"><span class="sum-lbl">'+q.lbl+'</span><span class="sum-val">'+(covQAnswers[q.id]||'-')+'</span></div>';});
+    }
+  });
+}
+
+// ── Update desktop step bar ──────────────────────────────────────────────
+function updateBar(n){
+  for(var i=1;i<=5;i++){
+    var el=document.getElementById('sb'+i);if(!el)continue;
+    el.classList.remove('active','done');
+    if(i<n)el.classList.add('done');else if(i===n)el.classList.add('active');
+    var ln=document.getElementById('sl'+i);if(ln)ln.classList.toggle('done',i<n);
+  }
+}
+
+// ── Submit ───────────────────────────────────────────────────────────────
+async function submitQuote(){
+  var cb=document.getElementById('consentCheck');
+  if(!cb.checked){
+    document.getElementById('consentBox').classList.add('err-consent');
+    showErr('errConsent',true,t('errConsent'));
+    return;
+  }
+  var btn=document.getElementById('submitBtn');
+  var errEl=document.getElementById('submitErr');
+  btn.disabled=true;
+  document.getElementById('lbl_submit').textContent=t('sending');
+
+  var covDetails='';
+  selected.forEach(function(cov){
+    var qs=COV_Q[cov]?COV_Q[cov].en:[];
+    covDetails+='\n--- '+cov+' ---\n';
+    if(covQAnswers[cov+'_skip']){covDetails+='⚠ SKIPPED — follow up needed\n';}
+    else{qs.forEach(function(q){covDetails+=q.lbl+': '+(covQAnswers[q.id]||'Not answered')+'\n';});}
+  });
+
+  var hospSummary=ynState.hosp==='yes'?('Yes — '+( val('hosp_detail')||'No details provided')):'No';
+  var illnessSummary=ynState.illness==='yes'?('Yes — '+(val('illness_detail')||'No details provided')):'No';
+
+  var params={
+    from_name:val('fname'),reply_to:val('femail'),user_email:val('femail'),
+    user_whatsapp:val('fwa')||'Not provided',
+    user_dob:document.getElementById('fdob').value,
+    user_gender:val('fgender'),user_occupation:val('focc')||'Not provided',
+    coverages:selected.join(', '),contact_pref:val('fpref'),
+    hospital_admission:hospSummary,preexisting_illness:illnessSummary,
+    coverage_details:covDetails,
+    declaration:'Confirmed — user checked accuracy declaration before submitting.'
+  };
+
+  try{
+    await emailjs.send(EJ_SERVICE_ID,EJ_TEMPLATE_ID,params);
+    // Send auto-reply if template is configured
+    if(EJ_AUTOREPLY_TEMPLATE_ID){
+      try{await emailjs.send(EJ_SERVICE_ID,EJ_AUTOREPLY_TEMPLATE_ID,{to_name:val('fname'),to_email:val('femail'),coverages:selected.join(', ')});}
+      catch(e){console.warn('Auto-reply failed',e);}
+    }
+    var email=val('femail');
+    document.getElementById('lbl_ok_body').innerHTML=t('ok_body').replace('$$',email);
+    goStep(6);
+  }catch(e){
+    errEl.textContent=t('send_failed')+' ('+(e.text||e.message||'unknown')+')';
+    errEl.style.display='block';
+    btn.disabled=false;
+    document.getElementById('lbl_submit').textContent=t('submit');
+  }
+}
+
+// ── Restart ──────────────────────────────────────────────────────────────
+function restart(){
+  selected=[];covQAnswers={};ynState={hosp:null,illness:null};
+  document.querySelectorAll('.cov-card').forEach(function(c){c.classList.remove('sel');});
+  ['fname','fdob','focc','femail','fwa','hosp_detail','illness_detail'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('fgender').value='';
+  document.getElementById('fpref').value='Email';
+  ['hosp_yes','hosp_no','illness_yes','illness_no'].forEach(function(id){var el=document.getElementById(id);if(el)el.className='yn-btn';});
+  ['hosp_warn','illness_warn'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
+  ['hosp_detail','illness_detail'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
+  document.getElementById('consentCheck').checked=false;
+  document.getElementById('consentBox').classList.remove('err-consent');
+  document.getElementById('submitBtn').disabled=false;
+  document.getElementById('submitErr').style.display='none';
+  document.getElementById('lbl_submit').textContent=t('submit');
+  goStep(1);
+}
+
+// Init mobile bar
+updateMobileBar(1);
+</script>
+</body>
+</html>
