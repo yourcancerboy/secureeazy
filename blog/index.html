@@ -4,16 +4,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Blog Asuransi Kesehatan – SecureEazy</title>
-<meta name="description" content="Panduan asuransi kesehatan dalam bahasa mudah: BPJS vs Allianz, estimasi premi, dan tips memilih perlindungan yang tepat di Indonesia."/>
+<meta name="description" content="Panduan asuransi kesehatan dalam bahasa mudah: BPJS vs Allianz, estimasi premi, cara klaim, asuransi keluarga, dan tips memilih perlindungan yang tepat di Indonesia."/>
 <link rel="canonical" href="https://secureeazy.com/blog/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Blog Asuransi Kesehatan – SecureEazy"/>
-<meta property="og:description" content="Panduan singkat dan jelas soal asuransi kesehatan di Indonesia. BPJS, Allianz, premi, dan cara upgrade perlindungan kamu."/>
+<meta property="og:description" content="Panduan singkat dan jelas soal asuransi kesehatan di Indonesia. BPJS, Allianz, premi, klaim, dan cara upgrade perlindungan kamu."/>
 <meta property="og:url" content="https://secureeazy.com/blog/"/>
 <meta property="og:image" content="https://secureeazy.com/og-image.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5P59303R9E"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5P59303R9E');</script>
 <style>
@@ -21,98 +20,127 @@
 body{font-family:'DM Sans',sans-serif;background:#f8f9fb;color:#1a2340;line-height:1.6}
 a{color:inherit;text-decoration:none}
 :root{--blue:#0033A0;--blue-light:#e8eef8;--border:#e2e6ef;--surface:#fff;--radius:12px;--text:#1a2340;--text-2:#4a5568}
-
-/* NAV */
 nav{background:#fff;border-bottom:1px solid var(--border);padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .nav-logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:var(--blue)}
 .nav-logo-badge{width:30px;height:30px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800}
-.nav-cta{background:var(--blue);color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
-
-/* BREADCRUMB */
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-link{font-size:14px;font-weight:500;color:var(--text-2);white-space:nowrap}
+.nav-link:hover{color:var(--blue)}
+.lang-toggle{display:flex;gap:4px}
+.lang-btn{background:transparent;border:1px solid var(--border);padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;color:var(--text-2);line-height:1.4}
+.lang-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.nav-cta{background:var(--blue);color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;display:inline-block;text-decoration:none;white-space:nowrap}
+.nav-cta:hover{opacity:.9}
+@media(max-width:600px){.nav-link{display:none}}
 .breadcrumb{max-width:900px;margin:0 auto;padding:1rem 1.5rem .25rem;font-size:13px;color:var(--text-2)}
 .breadcrumb a{color:var(--blue)}
 .breadcrumb a:hover{text-decoration:underline}
-
-/* HEADER */
 .blog-header{max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 2rem}
 .blog-header h1{font-size:clamp(22px,4vw,34px);font-weight:700;letter-spacing:-.4px;margin-bottom:.5rem}
 .blog-header p{font-size:15px;color:var(--text-2);max-width:540px}
-
-/* GRID */
 .articles{max-width:900px;margin:0 auto;padding:0 1.5rem 3rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.375rem;display:flex;flex-direction:column;gap:.625rem;transition:border-color .15s,transform .15s;box-shadow:0 1px 4px rgba(0,0,0,.05)}
 .card:hover{border-color:var(--blue);transform:translateY(-2px)}
 .tag{font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-light);padding:3px 10px;border-radius:20px;display:inline-block;width:fit-content}
-.card h2{font-size:16px;font-weight:700;line-height:1.4}
+.card h2{font-size:16px;font-weight:700;line-height:1.4;color:var(--text)}
 .card p{font-size:13px;color:var(--text-2);line-height:1.65;flex:1}
 .read-more{font-size:13px;font-weight:600;color:var(--blue);margin-top:.375rem}
 .card:hover .read-more{text-decoration:underline}
-
-/* CTA BANNER */
 .cta-banner{max-width:900px;margin:0 auto 3rem;padding:0 1.5rem}
 .cta-inner{background:linear-gradient(135deg,#001f6b,#0033A0);color:#fff;border-radius:var(--radius);padding:2rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap}
 .cta-inner h3{font-size:18px;font-weight:700;margin-bottom:.375rem}
 .cta-inner p{font-size:14px;color:rgba(255,255,255,.8);max-width:420px}
 .cta-inner a{background:#fff;color:var(--blue);padding:10px 22px;border-radius:8px;font-size:14px;font-weight:700;white-space:nowrap;display:inline-block;text-decoration:none}
 .cta-inner a:hover{opacity:.92}
-
-/* FOOTER */
 footer{border-top:1px solid var(--border);padding:1.25rem 1.5rem;text-align:center;font-size:12px;color:var(--text-2)}
 footer a{color:var(--blue)}
+.lang-en{display:none}
 </style>
 </head>
 <body>
-
 <nav>
-  <a href="/" class="nav-logo">
-    <div class="nav-logo-badge">SE</div>
-    SecureEazy
-  </a>
-  <a href="/" class="nav-cta">Dapatkan Penawaran</a>
+  <a href="/" class="nav-logo"><div class="nav-logo-badge">SE</div>SecureEazy</a>
+  <div class="nav-right">
+    <a href="/blog/" class="nav-link active" data-en="Blog" data-id="Blog">Blog</a>
+    <div class="lang-toggle">
+      <button class="lang-btn" data-lang="id" onclick="setBlogLang('id')">ID</button>
+      <button class="lang-btn" data-lang="en" onclick="setBlogLang('en')">EN</button>
+    </div>
+    <a href="/" class="nav-cta" data-en="Get a Quote" data-id="Dapatkan Penawaran">Dapatkan Penawaran</a>
+  </div>
 </nav>
 
-<p class="breadcrumb"><a href="/">Beranda</a> &rsaquo; Blog</p>
+<p class="breadcrumb"><a href="/">Beranda</a> &rsaquo; <span data-en="Blog" data-id="Blog">Blog</span></p>
 
 <div class="blog-header">
-  <h1>Panduan Asuransi Kesehatan</h1>
-  <p>Artikel singkat, bahasa mudah — biar kamu bisa pilih proteksi dengan percaya diri.</p>
+  <h1 data-en="Health Insurance Guides" data-id="Panduan Asuransi Kesehatan">Panduan Asuransi Kesehatan</h1>
+  <p data-en="Short articles, plain language — so you can choose protection with confidence." data-id="Artikel singkat, bahasa mudah — biar kamu bisa pilih proteksi dengan percaya diri.">Artikel singkat, bahasa mudah — biar kamu bisa pilih proteksi dengan percaya diri.</p>
 </div>
 
 <div class="articles">
   <a href="/blog/bpjs-tidak-cukup.html" class="card">
-    <span class="tag">BPJS</span>
-    <h2>5 Situasi di Mana BPJS Tidak Cukup</h2>
-    <p>Antrian panjang, RS pilihan terbatas, dan kamar kelas 3 — ini 5 momen nyata di mana peserta BPJS berharap punya perlindungan lebih.</p>
-    <span class="read-more">Baca selengkapnya →</span>
+    <span class="tag" data-en="BPJS" data-id="BPJS">BPJS</span>
+    <h2 data-en="5 Situations Where BPJS Is Not Enough" data-id="5 Situasi di Mana BPJS Tidak Cukup">5 Situasi di Mana BPJS Tidak Cukup</h2>
+    <p data-en="Long queues, limited hospital choice, and Class 3 wards — 5 real moments where BPJS members wished they had more protection." data-id="Antrian panjang, RS pilihan terbatas, dan kamar kelas 3 — 5 momen nyata di mana peserta BPJS berharap punya perlindungan lebih.">Antrian panjang, RS pilihan terbatas, dan kamar kelas 3 — 5 momen nyata di mana peserta BPJS berharap punya perlindungan lebih.</p>
+    <span class="read-more" data-en="Read more →" data-id="Baca selengkapnya →">Baca selengkapnya →</span>
   </a>
   <a href="/blog/premi-asuransi-allianz.html" class="card">
-    <span class="tag">Biaya</span>
-    <h2>Berapa Biaya Asuransi Kesehatan Allianz? (2026)</h2>
-    <p>Dari Rp 300 ribu per bulan sudah bisa dapat perlindungan rawat inap swasta. Panduan lengkap premi berdasarkan usia dan kebutuhan.</p>
-    <span class="read-more">Baca selengkapnya →</span>
+    <span class="tag" data-en="Cost" data-id="Biaya">Biaya</span>
+    <h2 data-en="How Much Does Allianz Health Insurance Cost? (2026)" data-id="Berapa Biaya Asuransi Kesehatan Allianz? (2026)">Berapa Biaya Asuransi Kesehatan Allianz? (2026)</h2>
+    <p data-en="From Rp 300K per month you can get private inpatient coverage. A complete guide to premiums by age and needs." data-id="Dari Rp 300 ribu per bulan sudah bisa dapat perlindungan rawat inap swasta. Panduan lengkap premi berdasarkan usia dan kebutuhan.">Dari Rp 300 ribu per bulan sudah bisa dapat perlindungan rawat inap swasta. Panduan lengkap premi berdasarkan usia dan kebutuhan.</p>
+    <span class="read-more" data-en="Read more →" data-id="Baca selengkapnya →">Baca selengkapnya →</span>
   </a>
   <a href="/blog/bpjs-vs-asuransi-swasta.html" class="card">
-    <span class="tag">Perbandingan</span>
-    <h2>BPJS vs Asuransi Swasta: Mana yang Lebih Worth It?</h2>
-    <p>Bukan soal memilih salah satu — ini soal tahu kapan kamu butuh keduanya. Perbandingan jujur dari sisi biaya, akses, dan manfaat.</p>
-    <span class="read-more">Baca selengkapnya →</span>
+    <span class="tag" data-en="Comparison" data-id="Perbandingan">Perbandingan</span>
+    <h2 data-en="BPJS vs Private Insurance: Which Is More Worth It?" data-id="BPJS vs Asuransi Swasta: Mana yang Lebih Worth It?">BPJS vs Asuransi Swasta: Mana yang Lebih Worth It?</h2>
+    <p data-en="It's not about choosing one — it's about knowing when you need both. An honest comparison of cost, access, and benefits." data-id="Bukan soal memilih salah satu — ini soal tahu kapan kamu butuh keduanya. Perbandingan jujur dari sisi biaya, akses, dan manfaat.">Bukan soal memilih salah satu — ini soal tahu kapan kamu butuh keduanya. Perbandingan jujur dari sisi biaya, akses, dan manfaat.</p>
+    <span class="read-more" data-en="Read more →" data-id="Baca selengkapnya →">Baca selengkapnya →</span>
+  </a>
+  <a href="/blog/asuransi-keluarga.html" class="card">
+    <span class="tag" data-en="Family" data-id="Keluarga">Keluarga</span>
+    <h2 data-en="Family Health Insurance: How Much Coverage Do You Need?" data-id="Asuransi Kesehatan Keluarga: Berapa yang Dibutuhkan?">Asuransi Kesehatan Keluarga: Berapa yang Dibutuhkan?</h2>
+    <p data-en="Estimated premiums for a family of 3–4, how to prioritise coverage, and tips to protect your whole family affordably." data-id="Estimasi premi untuk keluarga 3–4 orang, cara memprioritaskan perlindungan, dan tips melindungi seluruh keluarga dengan hemat.">Estimasi premi untuk keluarga 3–4 orang, cara memprioritaskan perlindungan, dan tips melindungi seluruh keluarga dengan hemat.</p>
+    <span class="read-more" data-en="Read more →" data-id="Baca selengkapnya →">Baca selengkapnya →</span>
+  </a>
+  <a href="/blog/cara-klaim-asuransi.html" class="card">
+    <span class="tag" data-en="Claims" data-id="Klaim">Klaim</span>
+    <h2 data-en="How to Claim Allianz Health Insurance: Step-by-Step Guide" data-id="Cara Klaim Asuransi Kesehatan Allianz: Panduan Lengkap">Cara Klaim Asuransi Kesehatan Allianz: Panduan Lengkap</h2>
+    <p data-en="Cashless vs reimbursement, documents you need, and tips to ensure your claim goes through without a hitch." data-id="Cashless vs reimbursement, dokumen yang diperlukan, dan tips agar klaimmu berjalan lancar tanpa hambatan.">Cashless vs reimbursement, dokumen yang diperlukan, dan tips agar klaimmu berjalan lancar tanpa hambatan.</p>
+    <span class="read-more" data-en="Read more →" data-id="Baca selengkapnya →">Baca selengkapnya →</span>
+  </a>
+  <a href="/blog/mengapa-usia-muda-butuh-asuransi.html" class="card">
+    <span class="tag" data-en="Young Adults" data-id="Usia Muda">Usia Muda</span>
+    <h2 data-en="Why Your 20s Is the Best Time to Buy Insurance" data-id="Kenapa Usia 20-an Justru Waktu Terbaik Beli Asuransi?">Kenapa Usia 20-an Justru Waktu Terbaik Beli Asuransi?</h2>
+    <p data-en="The math is clear: starting at 25 vs 35 means paying twice as much per month. Lock in the cheapest premium of your life — now." data-id="Matematikanya jelas: mulai usia 25 vs 35 artinya bayar dua kali lebih mahal per bulan. Kunci premi termurah dalam hidupmu — sekarang.">Matematikanya jelas: mulai usia 25 vs 35 artinya bayar dua kali lebih mahal per bulan. Kunci premi termurah dalam hidupmu — sekarang.</p>
+    <span class="read-more" data-en="Read more →" data-id="Baca selengkapnya →">Baca selengkapnya →</span>
   </a>
 </div>
 
 <div class="cta-banner">
   <div class="cta-inner">
     <div>
-      <h3>Siap upgrade perlindungan kamu?</h3>
-      <p>Dapatkan penawaran Allianz yang dipersonalisasi dalam 3 menit — tanpa agen yang mengejar, tanpa tekanan.</p>
+      <h3 data-en="Ready to upgrade your protection?" data-id="Siap upgrade perlindungan kamu?">Siap upgrade perlindungan kamu?</h3>
+      <p data-en="Get a personalised Allianz quote in 3 minutes — no agent follow-up, no pressure." data-id="Dapatkan penawaran Allianz yang dipersonalisasi dalam 3 menit — tanpa agen yang mengejar, tanpa tekanan.">Dapatkan penawaran Allianz yang dipersonalisasi dalam 3 menit — tanpa agen yang mengejar, tanpa tekanan.</p>
     </div>
-    <a href="/">Dapatkan penawaran gratis →</a>
+    <a href="/" data-en="Get my free quote →" data-id="Dapatkan penawaran gratis →">Dapatkan penawaran gratis →</a>
   </div>
 </div>
 
 <footer>
-  &copy; 2026 SecureEazy &nbsp;·&nbsp; Didukung oleh Allianz &nbsp;·&nbsp; <a href="/">Beranda</a>
-  <br/>Produk asuransi Allianz diawasi oleh OJK (Otoritas Jasa Keuangan).
+  &copy; 2026 SecureEazy &nbsp;·&nbsp; <span data-en="Powered by Allianz" data-id="Didukung oleh Allianz">Didukung oleh Allianz</span> &nbsp;·&nbsp; <a href="/">Beranda</a>
+  <br/><span data-en="Allianz insurance products are supervised by OJK (Financial Services Authority of Indonesia)." data-id="Produk asuransi Allianz diawasi oleh OJK (Otoritas Jasa Keuangan).">Produk asuransi Allianz diawasi oleh OJK (Otoritas Jasa Keuangan).</span>
 </footer>
 
+<script>
+function setBlogLang(l){
+  localStorage.setItem('se_lang',l);
+  document.documentElement.lang=l;
+  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});
+  document.querySelectorAll('[data-en]').forEach(function(el){var v=l==='id'?el.dataset.id:el.dataset.en;if(v!==undefined)el.innerHTML=v;});
+  document.querySelectorAll('.lang-id').forEach(function(el){el.style.display=l==='id'?'':'none';});
+  document.querySelectorAll('.lang-en').forEach(function(el){el.style.display=l==='en'?'':'none';});
+}
+setBlogLang(localStorage.getItem('se_lang')||'id');
+</script>
 </body>
 </html>

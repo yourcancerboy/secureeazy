@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -318,8 +318,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
   </div>
   <div class="nav-right">
     <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('id')">ID</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn active" onclick="setLang('id')">ID</button>
     </div>
     <button class="nav-cta" onclick="showQuote()" id="lbl_nav_cta">Get a Quote</button>
   </div>
@@ -765,7 +765,7 @@ emailjs.init(EJ_PUBLIC_KEY);
 document.querySelector('.wa-float').href = 'https://wa.me/' + WA_NUMBER;
 
 // ── State ────────────────────────────────────────────────────────────────
-var lang = 'en';
+var lang = localStorage.getItem('se_lang') || 'id';
 var selected = [];
 var covQAnswers = {};
 var ynState = { hosp: null, illness: null };
@@ -977,6 +977,8 @@ var COV_ICONS={Life:'heart-handshake',Health:'stethoscope',Vehicle:'car',Buildin
 // ── Language ─────────────────────────────────────────────────────────────
 function setLang(l){
   lang=l;
+  localStorage.setItem('se_lang',l);
+  document.documentElement.lang=l;
   document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.textContent.trim()===l.toUpperCase());});
   applyLang();
 }
@@ -1291,6 +1293,8 @@ function toggleFaq(btn){
 
 // Init mobile bar
 updateMobileBar(1);
+// Init language (applies saved preference or default ID)
+setLang(lang);
 </script>
 </body>
 </html>
