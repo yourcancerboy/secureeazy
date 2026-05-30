@@ -29,6 +29,17 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('config','G-5P59303R9E');
 </script>
+<!-- Meta Pixel — replace XXXXXXXXXXXXXXXX with your Pixel ID from business.facebook.com/events/manager -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','XXXXXXXXXXXXXXXX');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -247,6 +258,32 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
   .stepbar-mobile{display:flex}
 }
 
+/* ── UPGRADE BPJS ── */
+.upgrade-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.75rem}
+.upgrade-col{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+.upgrade-col-hdr{padding:.875rem 1.25rem;font-size:14px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
+.upgrade-col-hdr.bad{background:#c0392b}
+.upgrade-col-hdr.good{background:var(--blue)}
+.upgrade-items{list-style:none;padding:.875rem 1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.upgrade-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5;color:var(--text-2)}
+.upgrade-dot{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:1px}
+.upgrade-dot.bad{background:#fdf0ef;color:#c0392b}
+.upgrade-dot.good{background:var(--success-bg);color:var(--success-text)}
+.upgrade-cta-row{text-align:center;margin-top:1.25rem}
+@media(max-width:600px){.upgrade-grid{grid-template-columns:1fr}}
+
+/* ── BLOG SECTION ── */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;margin-bottom:1.5rem}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.25rem 1rem;display:flex;flex-direction:column;gap:.625rem;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.blog-card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.blog-tag{font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-light);padding:3px 10px;border-radius:20px;display:inline-block;width:fit-content}
+.blog-card-title{font-size:15px;font-weight:700;color:var(--text);line-height:1.45}
+.blog-card-excerpt{font-size:13px;color:var(--text-2);line-height:1.65}
+.blog-read-more{font-size:13px;font-weight:600;color:var(--blue);margin-top:auto;padding-top:.25rem}
+.blog-all-row{text-align:center;margin-top:.5rem}
+.blog-all-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--blue);text-decoration:none}
+.blog-all-link:hover{text-decoration:underline}
+
 /* ── PRICING GUIDE ── */
 .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1rem;margin-bottom:1rem}
 .price-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;display:flex;flex-direction:column;gap:5px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
@@ -313,6 +350,41 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
     <div class="trust-item"><i class="ti ti-user-off"></i><span id="lbl_trust2">No agent follow-up unless you want it</span></div>
     <div class="trust-item"><i class="ti ti-clock"></i><span id="lbl_trust3">Quote in under 3 minutes</span></div>
     <div class="trust-item"><i class="ti ti-rosette-discount-check"></i><span id="lbl_trust4">Genuine Allianz products</span></div>
+  </div>
+
+  <!-- Upgrade BPJS Section -->
+  <div id="lp-upgrade">
+    <div class="lp-section">
+      <div class="lp-section-title">
+        <h2 id="lbl_upgrade_title">Punya BPJS? Saatnya Upgrade.</h2>
+        <p id="lbl_upgrade_sub">BPJS adalah fondasi wajib — tapi ada celah nyata yang sering terasa saat kamu benar-benar butuh.</p>
+      </div>
+      <div class="upgrade-grid">
+        <div class="upgrade-col">
+          <div class="upgrade-col-hdr bad"><i class="ti ti-circle-x"></i><span id="lbl_upgrade_bpjs">BPJS Saja</span></div>
+          <ul class="upgrade-items">
+            <li class="upgrade-item"><span class="upgrade-dot bad">✕</span><span data-en="Long queues at government hospitals" data-id="Antrian berjam-jam di RS pemerintah">Antrian berjam-jam di RS pemerintah</span></li>
+            <li class="upgrade-item"><span class="upgrade-dot bad">✕</span><span data-en="Must go through multi-level referral system" data-id="Harus melalui sistem rujukan berlapis">Harus melalui sistem rujukan berlapis</span></li>
+            <li class="upgrade-item"><span class="upgrade-dot bad">✕</span><span data-en="Limited to BPJS partner hospitals only" data-id="Terbatas RS rekanan BPJS saja">Terbatas RS rekanan BPJS saja</span></li>
+            <li class="upgrade-item"><span class="upgrade-dot bad">✕</span><span data-en="Does not cover treatment abroad" data-id="Tidak berlaku untuk pengobatan di luar negeri">Tidak berlaku di luar negeri</span></li>
+            <li class="upgrade-item"><span class="upgrade-dot bad">✕</span><span data-en="Ward class 1/2/3 — no VIP option" data-id="Kamar kelas 1/2/3, tanpa opsi VIP">Kamar kelas 1/2/3, tanpa opsi VIP</span></li>
+          </ul>
+        </div>
+        <div class="upgrade-col">
+          <div class="upgrade-col-hdr good"><i class="ti ti-circle-check"></i><span id="lbl_upgrade_combo">BPJS + Allianz</span></div>
+          <ul class="upgrade-items">
+            <li class="upgrade-item"><span class="upgrade-dot good">✓</span><span data-en="Go directly to private hospital — today" data-id="Langsung ke RS swasta pilihan kamu, hari ini">Langsung ke RS swasta pilihan kamu</span></li>
+            <li class="upgrade-item"><span class="upgrade-dot good">✓</span><span data-en="Access specialists without a referral letter" data-id="Akses spesialis tanpa surat rujukan">Akses spesialis tanpa surat rujukan</span></li>
+            <li class="upgrade-item"><span class="upgrade-dot good">✓</span><span data-en="1,000+ partner hospitals across Indonesia" data-id="1.000+ RS rekanan di seluruh Indonesia">1.000+ RS rekanan di seluruh Indonesia</span></li>
+            <li class="upgrade-item"><span class="upgrade-dot good">✓</span><span data-en="Coverage across Asia and worldwide" data-id="Coverage Asia hingga seluruh dunia">Coverage Asia hingga seluruh dunia</span></li>
+            <li class="upgrade-item"><span class="upgrade-dot good">✓</span><span data-en="VIP room — private, with full facilities" data-id="Kamar VIP — pribadi, fasilitas lengkap">Kamar VIP — pribadi, fasilitas lengkap</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="upgrade-cta-row">
+        <button class="btn btn-p" onclick="showQuote();if(window.fbq)fbq('track','Lead')" style="padding:12px 28px;font-size:14px" id="lbl_upgrade_cta">Upgrade Sekarang →</button>
+      </div>
+    </div>
   </div>
 
   <div id="lp-how" style="background:var(--surface-2)">
@@ -442,6 +514,39 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
           <button class="faq-q" onclick="toggleFaq(this)"><span data-en="What happens when I need to make a claim?" data-id="Apa yang terjadi saat saya perlu mengajukan klaim?">What happens when I need to make a claim?</span><i class="ti ti-chevron-down faq-chevron"></i></button>
           <div class="faq-a"><p data-en="Claims are processed directly by Allianz. We can assist you in understanding the claim steps and connecting you with the right Allianz team." data-id="Klaim diproses langsung oleh Allianz. Kami dapat membantu Anda memahami langkah-langkah klaim dan menghubungkan Anda dengan tim Allianz yang tepat.">Claims are processed directly by Allianz. We can assist you in understanding the claim steps and connecting you with the right Allianz team.</p></div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BLOG ── -->
+  <div id="lp-blog">
+    <div class="lp-section">
+      <div class="lp-section-title">
+        <h2 id="lbl_blog_title">Panduan Asuransi Kesehatan</h2>
+        <p id="lbl_blog_sub">Artikel singkat, bahasa mudah — biar kamu bisa pilih proteksi dengan percaya diri.</p>
+      </div>
+      <div class="blog-grid">
+        <a href="blog/bpjs-tidak-cukup.html" class="blog-card">
+          <span class="blog-tag" id="lbl_blog1_tag">BPJS</span>
+          <div class="blog-card-title" id="lbl_blog1_title">5 Situasi di Mana BPJS Tidak Cukup</div>
+          <div class="blog-card-excerpt" id="lbl_blog1_exc">Antrian panjang, RS pilihan terbatas, dan kamar kelas 3 — ini 5 momen nyata di mana peserta BPJS berharap punya perlindungan lebih.</div>
+          <span class="blog-read-more" id="lbl_blog_read">Baca selengkapnya →</span>
+        </a>
+        <a href="blog/premi-asuransi-allianz.html" class="blog-card">
+          <span class="blog-tag" id="lbl_blog2_tag">Biaya</span>
+          <div class="blog-card-title" id="lbl_blog2_title">Berapa Biaya Asuransi Kesehatan Allianz? (2026)</div>
+          <div class="blog-card-excerpt" id="lbl_blog2_exc">Dari Rp 300 ribu per bulan sudah bisa dapat cobertura rawat inap swasta. Panduan lengkap premi berdasarkan usia dan kebutuhan.</div>
+          <span class="blog-read-more">Baca selengkapnya →</span>
+        </a>
+        <a href="blog/bpjs-vs-asuransi-swasta.html" class="blog-card">
+          <span class="blog-tag" id="lbl_blog3_tag">Perbandingan</span>
+          <div class="blog-card-title" id="lbl_blog3_title">BPJS vs Asuransi Swasta: Mana yang Lebih Worth It?</div>
+          <div class="blog-card-excerpt" id="lbl_blog3_exc">Bukan soal memilih salah satu — ini soal tahu kapan kamu butuh keduanya. Perbandingan jujur dari sisi biaya, akses, dan manfaat.</div>
+          <span class="blog-read-more">Baca selengkapnya →</span>
+        </a>
+      </div>
+      <div class="blog-all-row">
+        <a href="blog/" class="blog-all-link" id="lbl_blog_all">Lihat semua artikel <i class="ti ti-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -751,6 +856,13 @@ en:{
   price_disclaimer:'* Final pricing is determined by Allianz following underwriting assessment.',
   price_cta:'Get an accurate quote for your profile →',
   ojk_note:'Allianz insurance products are supervised by OJK (Financial Services Authority of Indonesia).',
+  upgrade_title:'Have BPJS? Time to Upgrade.',upgrade_sub:'BPJS is a mandatory foundation — but there are real gaps that hurt when you actually need it.',
+  upgrade_bpjs:'BPJS Alone',upgrade_combo:'BPJS + Allianz',upgrade_cta:'Upgrade Now →',
+  blog_title:'Health Insurance Guides',blog_sub:'Short articles, plain language — so you can choose protection with confidence.',
+  blog1_tag:'BPJS',blog1_title:'5 Situations Where BPJS Is Not Enough',blog1_exc:'Long queues, limited hospital choice, and Class 3 wards — 5 real moments where BPJS members wished they had more protection.',
+  blog2_tag:'Cost',blog2_title:'How Much Does Allianz Health Insurance Cost? (2026)',blog2_exc:'From Rp 300K per month you can get private inpatient coverage. A complete guide to premiums by age and needs.',
+  blog3_tag:'Comparison',blog3_title:'BPJS vs Private Insurance: Which Is More Worth It?',blog3_exc:"It's not about choosing one — it's about knowing when you need both. An honest comparison of cost, access, and benefits.",
+  blog_read:'Read more →',blog_all:'See all articles',
 },
 id:{
   powered:'Didukung oleh Allianz',nav_cta:'Dapatkan Penawaran',wa_float:'Chat dulu dengan kami',
@@ -823,6 +935,13 @@ id:{
   price_disclaimer:'* Harga final ditentukan oleh Allianz setelah penilaian underwriting.',
   price_cta:'Dapatkan penawaran tepat untuk profil Anda →',
   ojk_note:'Produk asuransi Allianz diawasi oleh OJK (Otoritas Jasa Keuangan).',
+  upgrade_title:'Punya BPJS? Saatnya Upgrade.',upgrade_sub:'BPJS adalah fondasi wajib — tapi ada celah nyata yang sering terasa saat kamu benar-benar butuh.',
+  upgrade_bpjs:'BPJS Saja',upgrade_combo:'BPJS + Allianz',upgrade_cta:'Upgrade Sekarang →',
+  blog_title:'Panduan Asuransi Kesehatan',blog_sub:'Artikel singkat, bahasa mudah — biar kamu bisa pilih proteksi dengan percaya diri.',
+  blog1_tag:'BPJS',blog1_title:'5 Situasi di Mana BPJS Tidak Cukup',blog1_exc:'Antrian panjang, RS pilihan terbatas, dan kamar kelas 3 — ini 5 momen nyata di mana peserta BPJS berharap punya perlindungan lebih.',
+  blog2_tag:'Biaya',blog2_title:'Berapa Biaya Asuransi Kesehatan Allianz? (2026)',blog2_exc:'Dari Rp 300 ribu per bulan sudah bisa dapat cobertura rawat inap swasta. Panduan lengkap premi berdasarkan usia dan kebutuhan.',
+  blog3_tag:'Perbandingan',blog3_title:'BPJS vs Asuransi Swasta: Mana yang Lebih Worth It?',blog3_exc:'Bukan soal memilih salah satu — ini soal tahu kapan kamu butuh keduanya. Perbandingan jujur dari sisi biaya, akses, dan manfaat.',
+  blog_read:'Baca selengkapnya →',blog_all:'Lihat semua artikel',
 }
 };
 
@@ -903,6 +1022,13 @@ var STATIC_IDS={
   faq_title:'lbl_faq_title',faq_sub:'lbl_faq_sub',
   price_title:'lbl_price_title',price_sub:'lbl_price_sub',
   price_disclaimer:'lbl_price_disclaimer',price_cta:'lbl_price_cta',
+  upgrade_title:'lbl_upgrade_title',upgrade_sub:'lbl_upgrade_sub',
+  upgrade_bpjs:'lbl_upgrade_bpjs',upgrade_combo:'lbl_upgrade_combo',upgrade_cta:'lbl_upgrade_cta',
+  blog_title:'lbl_blog_title',blog_sub:'lbl_blog_sub',
+  blog1_tag:'lbl_blog1_tag',blog1_title:'lbl_blog1_title',blog1_exc:'lbl_blog1_exc',
+  blog2_tag:'lbl_blog2_tag',blog2_title:'lbl_blog2_title',blog2_exc:'lbl_blog2_exc',
+  blog3_tag:'lbl_blog3_tag',blog3_title:'lbl_blog3_title',blog3_exc:'lbl_blog3_exc',
+  blog_read:'lbl_blog_read',blog_all:'lbl_blog_all',
   ojk_note:'lbl_ojk_note'
 };
 var HTML_KEYS=['hero_h1','hero_p','ok_body'];
