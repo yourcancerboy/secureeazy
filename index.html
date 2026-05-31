@@ -57,6 +57,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(-
 
 /* ── NAV ── */
 nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:56px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.75rem;}
+.nav-left{display:flex;align-items:center;gap:.875rem}
 .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer}
 .nav-mark{width:34px;height:34px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center}
 .nav-mark i{color:#fff;font-size:18px}
@@ -324,11 +325,17 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo" onclick="navScrollTo('top')">
-    <div class="nav-mark"><i class="ti ti-shield-check"></i></div>
-    <div>
-      <div class="nav-name">Secure<span>Easy</span></div>
-      <div class="nav-powered" id="lbl_powered">Powered by Allianz</div>
+  <div class="nav-left">
+    <div class="nav-logo" onclick="navScrollTo('top')">
+      <div class="nav-mark"><i class="ti ti-shield-check"></i></div>
+      <div>
+        <div class="nav-name">Secure<span>Easy</span></div>
+        <div class="nav-powered" id="lbl_powered">Powered by Allianz</div>
+      </div>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn active" onclick="setLang('id')">ID</button>
     </div>
   </div>
   <div class="nav-center">
@@ -340,10 +347,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
     <a href="/about.html" class="nav-center-link" id="lbl_nav_about">Tentang</a>
   </div>
   <div class="nav-right">
-    <div class="lang-toggle">
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn active" onclick="setLang('id')">ID</button>
-    </div>
     <button class="nav-cta" onclick="showQuote()" id="lbl_nav_cta">Dapatkan Penawaran</button>
     <button class="nav-hamburger" onclick="toggleMainNav()" aria-label="Menu">&#9776;</button>
   </div>
