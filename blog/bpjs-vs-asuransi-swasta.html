@@ -32,7 +32,14 @@ nav{background:#fff;border-bottom:1px solid var(--border);padding:0 1.5rem;heigh
 .lang-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
 .nav-cta{background:var(--blue);color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;display:inline-block;text-decoration:none;white-space:nowrap}
 .nav-cta:hover{opacity:.9;text-decoration:none}
-@media(max-width:600px){.nav-link{display:none}}
+.nav-hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--text);padding:4px 6px;line-height:1;margin-left:.25rem}
+.nav-mobile{display:none;background:#fff;border-bottom:1px solid var(--border);padding:.875rem 1.5rem;flex-direction:column;gap:0;position:sticky;top:56px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile-link{font-size:15px;font-weight:500;color:var(--text-2);padding:.625rem 0;border-bottom:1px solid var(--border);text-decoration:none;display:block}
+.nav-mobile-link:hover{color:var(--blue)}
+.nav-mobile-lang{display:flex;gap:6px;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.btn-mobile-cta{display:block;background:var(--blue);color:#fff;text-align:center;padding:10px;border-radius:8px;font-size:14px;font-weight:700;margin-top:.75rem;text-decoration:none}
+@media(max-width:720px){.nav-link{display:none}.nav-hamburger{display:block}}
 .wrap{max-width:720px;margin:0 auto;padding:0 1.5rem}
 .breadcrumb{padding:1rem 0 .25rem;font-size:13px;color:var(--text-2)}
 .breadcrumb a{color:var(--blue)}
@@ -91,13 +98,26 @@ footer a{color:var(--blue)}
   <a href="/" class="nav-logo"><div class="nav-logo-badge">SE</div>SecureEazy</a>
   <div class="nav-right">
     <a href="/blog/" class="nav-link" data-en="Blog" data-id="Blog">Blog</a>
+    <a href="/about.html" class="nav-link" data-en="About" data-id="Tentang">Tentang</a>
     <div class="lang-toggle">
       <button class="lang-btn" data-lang="id" onclick="setBlogLang('id')">ID</button>
       <button class="lang-btn" data-lang="en" onclick="setBlogLang('en')">EN</button>
     </div>
     <a href="/" class="nav-cta" data-en="Get a Quote" data-id="Dapatkan Penawaran">Dapatkan Penawaran</a>
+    <button class="nav-hamburger" onclick="toggleBlogNav()" aria-label="Menu">&#9776;</button>
   </div>
 </nav>
+<div class="nav-mobile" id="blogNavMobile">
+  <a href="/" class="nav-mobile-link" data-en="Home" data-id="Beranda">Beranda</a>
+  <a href="/blog/" class="nav-mobile-link" data-en="Blog" data-id="Blog">Blog</a>
+  <a href="/about.html" class="nav-mobile-link" data-en="About Us" data-id="Tentang Kami">Tentang Kami</a>
+  <a href="/privacy-policy.html" class="nav-mobile-link" data-en="Privacy Policy" data-id="Kebijakan Privasi">Kebijakan Privasi</a>
+  <div class="nav-mobile-lang">
+    <button class="lang-btn" data-lang="id" onclick="setBlogLang('id')">ID</button>
+    <button class="lang-btn" data-lang="en" onclick="setBlogLang('en')">EN</button>
+  </div>
+  <a href="/" class="btn-mobile-cta" data-en="Get a Quote →" data-id="Dapatkan Penawaran →">Dapatkan Penawaran →</a>
+</div>
 
 <div class="wrap">
   <p class="breadcrumb"><a href="/">Beranda</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; <span data-en="BPJS vs Private Insurance" data-id="BPJS vs Asuransi Swasta">BPJS vs Asuransi Swasta</span></p>
@@ -315,9 +335,10 @@ function setBlogLang(l){
   document.documentElement.lang=l;
   document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});
   document.querySelectorAll('[data-en]').forEach(function(el){var v=l==='id'?el.dataset.id:el.dataset.en;if(v!==undefined)el.innerHTML=v;});
-  document.querySelectorAll('.lang-id').forEach(function(el){el.style.display=l==='id'?'':'none';});
-  document.querySelectorAll('.lang-en').forEach(function(el){el.style.display=l==='en'?'':'none';});
+  document.querySelectorAll('.lang-id').forEach(function(el){el.style.display=l==='id'?'block':'none';});
+  document.querySelectorAll('.lang-en').forEach(function(el){el.style.display=l==='en'?'block':'none';});
 }
+function toggleBlogNav(){var m=document.getElementById('blogNavMobile');m.classList.toggle('open');}
 setBlogLang(localStorage.getItem('se_lang')||'id');
 </script>
 </body>

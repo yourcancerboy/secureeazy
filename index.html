@@ -246,6 +246,17 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
 
 #submitErr{font-size:12px;color:var(--danger);margin-top:.5rem;display:none}
 
+/* ── HAMBURGER NAV ── */
+.nav-link-main{font-size:14px;font-weight:500;color:var(--text-2);white-space:nowrap;text-decoration:none}
+.nav-link-main:hover{color:var(--blue)}
+.nav-hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--text);padding:4px 6px;line-height:1;margin-left:.25rem}
+.nav-mobile-main{display:none;background:#fff;border-bottom:1px solid var(--border);padding:.875rem 1.5rem;flex-direction:column;gap:0;position:sticky;top:56px;z-index:99}
+.nav-mobile-main.open{display:flex}
+.nav-mobile-link{font-size:15px;font-weight:500;color:var(--text-2);padding:.625rem 0;border-bottom:1px solid var(--border);text-decoration:none;display:block}
+.nav-mobile-link:hover{color:var(--blue)}
+.nav-mobile-lang{display:flex;gap:6px;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.btn-mobile-cta{display:block;background:var(--blue);color:#fff;text-align:center;padding:10px;border-radius:8px;font-size:14px;font-weight:700;margin-top:.75rem;text-decoration:none;border:none;cursor:pointer;font-family:inherit;width:100%}
+
 /* Responsive */
 @media(max-width:600px){
   .cov-grid{grid-template-columns:repeat(2,1fr)}
@@ -257,6 +268,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
   .stepbar{display:none}
   .stepbar-mobile{display:flex}
 }
+@media(max-width:720px){.nav-link-main{display:none}.nav-hamburger{display:block}}
 
 /* ── UPGRADE BPJS ── */
 .upgrade-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.75rem}
@@ -317,13 +329,26 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
     </div>
   </div>
   <div class="nav-right">
+    <a href="/blog/" class="nav-link-main" id="lbl_nav_blog">Blog</a>
+    <a href="/about.html" class="nav-link-main" id="lbl_nav_about">Tentang</a>
     <div class="lang-toggle">
       <button class="lang-btn" onclick="setLang('en')">EN</button>
       <button class="lang-btn active" onclick="setLang('id')">ID</button>
     </div>
     <button class="nav-cta" onclick="showQuote()" id="lbl_nav_cta">Get a Quote</button>
+    <button class="nav-hamburger" onclick="toggleMainNav()" aria-label="Menu">&#9776;</button>
   </div>
 </nav>
+<div class="nav-mobile-main" id="mainNavMobile">
+  <a href="/blog/" class="nav-mobile-link" id="lbl_mob_blog">Blog</a>
+  <a href="/about.html" class="nav-mobile-link" id="lbl_mob_about">Tentang Kami</a>
+  <a href="/privacy-policy.html" class="nav-mobile-link" id="lbl_mob_privacy">Kebijakan Privasi</a>
+  <div class="nav-mobile-lang">
+    <button class="lang-btn" onclick="setLang('id')">ID</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+  <button class="btn-mobile-cta" onclick="toggleMainNav();showQuote();" id="lbl_mob_cta">Dapatkan Penawaran →</button>
+</div>
 
 <!-- WhatsApp float -->
 <a class="wa-float" href="https://wa.me/628XXXXXXXXXX" target="_blank" id="wa_float_btn">
@@ -558,7 +583,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
   </div>
 
   <footer>
-    &copy; 2025 SecureEazy &nbsp;·&nbsp; <span id="lbl_footer_allianz">Powered by Allianz</span> &nbsp;·&nbsp; <span id="lbl_footer_note">All information is handled securely and used only to prepare your quote.</span>
+    &copy; 2026 SecureEazy &nbsp;·&nbsp; <span id="lbl_footer_allianz">Powered by Allianz</span> &nbsp;·&nbsp; <a href="/blog/" style="color:rgba(255,255,255,.4)">Blog</a> &nbsp;·&nbsp; <a href="/about.html" id="lbl_nav_about_footer" style="color:rgba(255,255,255,.4)">Tentang Kami</a> &nbsp;·&nbsp; <a href="/privacy-policy.html" id="lbl_nav_privacy_footer" style="color:rgba(255,255,255,.4)">Kebijakan Privasi</a>
     <br/><span id="lbl_ojk_note">Allianz insurance products are supervised by OJK (Financial Services Authority of Indonesia).</span>
   </footer>
 
@@ -786,7 +811,7 @@ function showQuote(){
 // ── Translations ─────────────────────────────────────────────────────────
 var T={
 en:{
-  powered:'Powered by Allianz',nav_cta:'Get a Quote',wa_float:'Chat with us first',
+  powered:'Powered by Allianz',nav_cta:'Get a Quote',wa_float:'Chat with us first',nav_blog:'Blog',nav_about:'About',mob_blog:'Blog',mob_about:'About Us',mob_privacy:'Privacy Policy',mob_cta:'Get a Quote →',
   badge:'Official Allianz Partner',
   hero_h1:'Insurance that works <em>for you</em>,<br>not around you.',
   hero_p:'Get a personalised Allianz quote in minutes. No agents hunting you down. No pressure. Just clear coverage, done your way.',
@@ -865,7 +890,7 @@ en:{
   blog_read:'Read more →',blog_all:'See all articles',
 },
 id:{
-  powered:'Didukung oleh Allianz',nav_cta:'Dapatkan Penawaran',wa_float:'Chat dulu dengan kami',
+  powered:'Didukung oleh Allianz',nav_cta:'Dapatkan Penawaran',wa_float:'Chat dulu dengan kami',nav_blog:'Blog',nav_about:'Tentang',mob_blog:'Blog',mob_about:'Tentang Kami',mob_privacy:'Kebijakan Privasi',mob_cta:'Dapatkan Penawaran →',
   badge:'Mitra Resmi Allianz',
   hero_h1:'Asuransi yang bekerja <em>untuk Anda</em>,<br>bukan sebaliknya.',
   hero_p:'Dapatkan penawaran Allianz dalam hitungan menit. Tanpa agen yang mengejar. Tanpa tekanan. Perlindungan yang jelas, sesuai keinginan Anda.',
@@ -974,6 +999,9 @@ var COV_Q={
 };
 var COV_ICONS={Life:'heart-handshake',Health:'stethoscope',Vehicle:'car',Buildings:'building',Travel:'plane','Personal Accident':'first-aid-kit'};
 
+// ── Nav hamburger ─────────────────────────────────────────────────────────
+function toggleMainNav(){var m=document.getElementById('mainNavMobile');m.classList.toggle('open');}
+
 // ── Language ─────────────────────────────────────────────────────────────
 function setLang(l){
   lang=l;
@@ -985,7 +1013,7 @@ function setLang(l){
 function t(k){return T[lang][k]!==undefined?T[lang][k]:(T.en[k]||'');}
 
 var STATIC_IDS={
-  powered:'lbl_powered',nav_cta:'lbl_nav_cta',wa_float:'lbl_wa_float',badge:'lbl_badge',
+  powered:'lbl_powered',nav_cta:'lbl_nav_cta',wa_float:'lbl_wa_float',badge:'lbl_badge',nav_blog:'lbl_nav_blog',nav_about:'lbl_nav_about',mob_blog:'lbl_mob_blog',mob_about:'lbl_mob_about',mob_privacy:'lbl_mob_privacy',mob_cta:'lbl_mob_cta',
   hero_p:'lbl_hero_p',hero_cta:'lbl_hero_cta',hero_learn:'lbl_hero_learn',
   trust1:'lbl_trust1',trust2:'lbl_trust2',trust3:'lbl_trust3',trust4:'lbl_trust4',
   how_title:'lbl_how_title',how_sub:'lbl_how_sub',
