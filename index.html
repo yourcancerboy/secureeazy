@@ -56,13 +56,18 @@ html{scroll-behavior:smooth}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.875rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:56px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.75rem;}
 .nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer}
 .nav-mark{width:34px;height:34px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center}
 .nav-mark i{color:#fff;font-size:18px}
 .nav-name{font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.3px}
 .nav-name span{color:var(--blue)}
 .nav-powered{font-size:10px;color:var(--text-3)}
+/* ── NAV CENTER ── */
+.nav-center{display:flex;align-items:center;justify-content:center;gap:1.5rem}
+.nav-center-link{font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;white-space:nowrap;transition:color .15s;padding:0 2px}
+.nav-center-link:hover{color:var(--blue)}
+/* ── NAV RIGHT ── */
 .nav-right{display:flex;align-items:center;gap:10px}
 .lang-toggle{display:flex;gap:4px}
 .lang-btn{padding:4px 12px;font-size:12px;font-weight:600;border:1.5px solid var(--border-2);border-radius:20px;cursor:pointer;background:transparent;color:var(--text-2);font-family:inherit;transition:all .15s}
@@ -247,8 +252,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
 #submitErr{font-size:12px;color:var(--danger);margin-top:.5rem;display:none}
 
 /* ── HAMBURGER NAV ── */
-.nav-link-main{font-size:14px;font-weight:500;color:var(--text-2);white-space:nowrap;text-decoration:none}
-.nav-link-main:hover{color:var(--blue)}
 .nav-hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--text);padding:4px 6px;line-height:1;margin-left:.25rem}
 .nav-mobile-main{display:none;background:#fff;border-bottom:1px solid var(--border);padding:.875rem 1.5rem;flex-direction:column;gap:0;position:sticky;top:56px;z-index:99}
 .nav-mobile-main.open{display:flex}
@@ -268,7 +271,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
   .stepbar{display:none}
   .stepbar-mobile{display:flex}
 }
-@media(max-width:720px){.nav-link-main{display:none}.nav-hamburger{display:block}}
+@media(max-width:900px){.nav-center{display:none}.nav-hamburger{display:block}}
 
 /* ── UPGRADE BPJS ── */
 .upgrade-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.75rem}
@@ -321,25 +324,35 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo" onclick="showLanding()">
+  <div class="nav-logo" onclick="navScrollTo('top')">
     <div class="nav-mark"><i class="ti ti-shield-check"></i></div>
     <div>
       <div class="nav-name">Secure<span>Easy</span></div>
       <div class="nav-powered" id="lbl_powered">Powered by Allianz</div>
     </div>
   </div>
+  <div class="nav-center">
+    <a href="#lp-how" class="nav-center-link" onclick="navScrollTo('lp-how');return false;" id="lbl_navlnk_how">Cara Kerja</a>
+    <a href="#lp-coverage" class="nav-center-link" onclick="navScrollTo('lp-coverage');return false;" id="lbl_navlnk_cov">Produk</a>
+    <a href="#lp-price" class="nav-center-link" onclick="navScrollTo('lp-price');return false;" id="lbl_navlnk_price">Premi</a>
+    <a href="#lp-faq" class="nav-center-link" onclick="navScrollTo('lp-faq');return false;" id="lbl_navlnk_faq">FAQ</a>
+    <a href="/blog/" class="nav-center-link" id="lbl_nav_blog">Blog</a>
+    <a href="/about.html" class="nav-center-link" id="lbl_nav_about">Tentang</a>
+  </div>
   <div class="nav-right">
-    <a href="/blog/" class="nav-link-main" id="lbl_nav_blog">Blog</a>
-    <a href="/about.html" class="nav-link-main" id="lbl_nav_about">Tentang</a>
     <div class="lang-toggle">
       <button class="lang-btn" onclick="setLang('en')">EN</button>
       <button class="lang-btn active" onclick="setLang('id')">ID</button>
     </div>
-    <button class="nav-cta" onclick="showQuote()" id="lbl_nav_cta">Get a Quote</button>
+    <button class="nav-cta" onclick="showQuote()" id="lbl_nav_cta">Dapatkan Penawaran</button>
     <button class="nav-hamburger" onclick="toggleMainNav()" aria-label="Menu">&#9776;</button>
   </div>
 </nav>
 <div class="nav-mobile-main" id="mainNavMobile">
+  <a href="#lp-how" class="nav-mobile-link" onclick="navScrollTo('lp-how')" data-en="How it Works" data-id="Cara Kerja">Cara Kerja</a>
+  <a href="#lp-coverage" class="nav-mobile-link" onclick="navScrollTo('lp-coverage')" data-en="Coverage" data-id="Produk">Produk</a>
+  <a href="#lp-price" class="nav-mobile-link" onclick="navScrollTo('lp-price')" data-en="Pricing" data-id="Premi">Premi</a>
+  <a href="#lp-faq" class="nav-mobile-link" onclick="navScrollTo('lp-faq')" data-en="FAQ" data-id="FAQ">FAQ</a>
   <a href="/blog/" class="nav-mobile-link" id="lbl_mob_blog">Blog</a>
   <a href="/about.html" class="nav-mobile-link" id="lbl_mob_about">Tentang Kami</a>
   <a href="/privacy-policy.html" class="nav-mobile-link" id="lbl_mob_privacy">Kebijakan Privasi</a>
@@ -426,7 +439,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
     </div>
   </div>
 
-  <div>
+  <div id="lp-coverage">
     <div class="lp-section">
       <div class="lp-section-title">
         <h2 id="lbl_cov_title">What we cover</h2>
@@ -443,7 +456,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
     </div>
   </div>
 
-  <div style="background:var(--surface-2)">
+  <div id="lp-price" style="background:var(--surface-2)">
     <div class="lp-section">
       <div class="lp-section-title">
         <h2 id="lbl_price_title">Monthly Premium Estimates</h2>
@@ -504,7 +517,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
     </div>
   </div>
 
-  <div style="background:var(--surface-2)">
+  <div id="lp-faq" style="background:var(--surface-2)">
     <div class="lp-section">
       <div class="lp-section-title">
         <h2 id="lbl_faq_title">Frequently Asked Questions</h2>
@@ -811,7 +824,7 @@ function showQuote(){
 // ── Translations ─────────────────────────────────────────────────────────
 var T={
 en:{
-  powered:'Powered by Allianz',nav_cta:'Get a Quote',wa_float:'Chat with us first',nav_blog:'Blog',nav_about:'About',mob_blog:'Blog',mob_about:'About Us',mob_privacy:'Privacy Policy',mob_cta:'Get a Quote →',
+  powered:'Powered by Allianz',nav_cta:'Get a Quote',wa_float:'Chat with us first',navlnk_how:'How it Works',navlnk_cov:'Coverage',navlnk_price:'Pricing',navlnk_faq:'FAQ',nav_blog:'Blog',nav_about:'About',mob_blog:'Blog',mob_about:'About Us',mob_privacy:'Privacy Policy',mob_cta:'Get a Quote →',
   badge:'Official Allianz Partner',
   hero_h1:'Insurance that works <em>for you</em>,<br>not around you.',
   hero_p:'Get a personalised Allianz quote in minutes. No agents hunting you down. No pressure. Just clear coverage, done your way.',
@@ -890,7 +903,7 @@ en:{
   blog_read:'Read more →',blog_all:'See all articles',
 },
 id:{
-  powered:'Didukung oleh Allianz',nav_cta:'Dapatkan Penawaran',wa_float:'Chat dulu dengan kami',nav_blog:'Blog',nav_about:'Tentang',mob_blog:'Blog',mob_about:'Tentang Kami',mob_privacy:'Kebijakan Privasi',mob_cta:'Dapatkan Penawaran →',
+  powered:'Didukung oleh Allianz',nav_cta:'Dapatkan Penawaran',wa_float:'Chat dulu dengan kami',navlnk_how:'Cara Kerja',navlnk_cov:'Produk',navlnk_price:'Premi',navlnk_faq:'FAQ',nav_blog:'Blog',nav_about:'Tentang',mob_blog:'Blog',mob_about:'Tentang Kami',mob_privacy:'Kebijakan Privasi',mob_cta:'Dapatkan Penawaran →',
   badge:'Mitra Resmi Allianz',
   hero_h1:'Asuransi yang bekerja <em>untuk Anda</em>,<br>bukan sebaliknya.',
   hero_p:'Dapatkan penawaran Allianz dalam hitungan menit. Tanpa agen yang mengejar. Tanpa tekanan. Perlindungan yang jelas, sesuai keinginan Anda.',
@@ -1001,6 +1014,16 @@ var COV_ICONS={Life:'heart-handshake',Health:'stethoscope',Vehicle:'car',Buildin
 
 // ── Nav hamburger ─────────────────────────────────────────────────────────
 function toggleMainNav(){var m=document.getElementById('mainNavMobile');m.classList.toggle('open');}
+function navScrollTo(id){
+  var m=document.getElementById('mainNavMobile');
+  if(m)m.classList.remove('open');
+  showLanding();
+  setTimeout(function(){
+    if(id==='top'){window.scrollTo({top:0,behavior:'smooth'});return;}
+    var el=document.getElementById(id);
+    if(el)el.scrollIntoView({behavior:'smooth'});
+  },50);
+}
 
 // ── Language ─────────────────────────────────────────────────────────────
 function setLang(l){
@@ -1013,7 +1036,7 @@ function setLang(l){
 function t(k){return T[lang][k]!==undefined?T[lang][k]:(T.en[k]||'');}
 
 var STATIC_IDS={
-  powered:'lbl_powered',nav_cta:'lbl_nav_cta',wa_float:'lbl_wa_float',badge:'lbl_badge',nav_blog:'lbl_nav_blog',nav_about:'lbl_nav_about',mob_blog:'lbl_mob_blog',mob_about:'lbl_mob_about',mob_privacy:'lbl_mob_privacy',mob_cta:'lbl_mob_cta',
+  powered:'lbl_powered',nav_cta:'lbl_nav_cta',wa_float:'lbl_wa_float',badge:'lbl_badge',navlnk_how:'lbl_navlnk_how',navlnk_cov:'lbl_navlnk_cov',navlnk_price:'lbl_navlnk_price',navlnk_faq:'lbl_navlnk_faq',nav_blog:'lbl_nav_blog',nav_about:'lbl_nav_about',mob_blog:'lbl_mob_blog',mob_about:'lbl_mob_about',mob_privacy:'lbl_mob_privacy',mob_cta:'lbl_mob_cta',
   hero_p:'lbl_hero_p',hero_cta:'lbl_hero_cta',hero_learn:'lbl_hero_learn',
   trust1:'lbl_trust1',trust2:'lbl_trust2',trust3:'lbl_trust3',trust4:'lbl_trust4',
   how_title:'lbl_how_title',how_sub:'lbl_how_sub',
